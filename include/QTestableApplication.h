@@ -5,8 +5,11 @@
 
 class QTestableApplication : public QApplication
 {
+  struct QTestableApplicationPrivate *d;
+
   public:
     QTestableApplication(int argc, char **argv);
+    ~QTestableApplication();
 };
 
 #endif

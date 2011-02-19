@@ -1,5 +1,5 @@
 SET(BLANK)
-SET(qTestable_SOURCES QTestableApplication.cpp ConfigParser.cpp ${BLANK})
+SET(qTestable_SOURCES QTestableApplication.cpp ConfigParser.cpp ParseRestRequest.cpp ${BLANK})
 SET(qTestable_HEADERS )
 QT4_WRAP_CPP(qTestable_HEADERS_MOC ${qTestable_HEADERS})
 
