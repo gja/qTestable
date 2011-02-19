@@ -7,7 +7,7 @@ macro (do_test arg)
   add_executable (${arg} ${arg}.cpp)
   add_custom_target(${arg}.moc SOURCES ${arg}.moc)
   add_dependencies (${arg} ${arg}.moc)
-  target_link_libraries(${arg} ${QT_LIBRARIES})
+  target_link_libraries(${arg} ${QT_LIBRARIES} qTestable)
   add_test (${arg} ${arg})
 endmacro (do_test)
 
