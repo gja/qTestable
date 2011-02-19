@@ -10,5 +10,3 @@ macro (do_test arg)
   target_link_libraries(${arg} ${QT_LIBRARIES})
   add_test (${arg} ${arg})
 endmacro (do_test)
-
-do_test(blah)
