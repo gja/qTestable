@@ -1,4 +1,4 @@
-SET(qTestable_SOURCES QTestableApplication.cpp)
+SET(qTestable_SOURCES QTestableApplication.cpp ConfigParser.cpp)
 SET(qTestable_HEADERS )
 QT4_WRAP_CPP(qTestable_HEADERS_MOC ${qTestable_HEADERS})
 

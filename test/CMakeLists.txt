@@ -11,3 +11,4 @@ macro (do_test arg)
   add_test (${arg} ${arg})
 endmacro (do_test)
 
+do_test(ConfigParserTest)
