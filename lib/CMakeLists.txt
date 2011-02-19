@@ -1,6 +1,6 @@
-SET(helloworld_SOURCES helloworld.cpp)
-SET(helloworld_HEADERS )
-QT4_WRAP_CPP(helloworld_HEADERS_MOC ${helloworld_HEADERS})
+SET(qTestable_SOURCES QTestableApplication.cpp)
+SET(qTestable_HEADERS )
+QT4_WRAP_CPP(qTestable_HEADERS_MOC ${qTestable_HEADERS})
 
-ADD_LIBRARY(helloworld SHARED ${helloworld_SOURCES} ${helloworld_HEADERS_MOC})
-TARGET_LINK_LIBRARIES(helloworld ${QT_LIBRARIES})
+ADD_LIBRARY(qTestable SHARED ${qTestable_SOURCES} ${qTestable_HEADERS_MOC})
+TARGET_LINK_LIBRARIES(qTestable ${QT_LIBRARIES})
