@@ -5,5 +5,5 @@ if [ "$1" == "" ]; then
   exit 1
 fi
 
-sed 's/blah/$1/g' test_template.cpp > $1.cpp
-echo "do_test($1)" >> CMakeLists.txt
+sed "s/blah/$1/g" test_template.cpp > "$1Test.cpp"
+echo "do_test($1Test)" >> CMakeLists.txt

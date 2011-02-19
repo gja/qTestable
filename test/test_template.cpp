@@ -1,6 +1,7 @@
 #include <QTest>
+#include "blah.h"
 
-class blah : public QObject
+class blahTest : public QObject
 {
   Q_OBJECT
   private slots:
@@ -10,5 +11,5 @@ class blah : public QObject
     }
 };
 
-QTEST_MAIN(blah)
-#include "blah.moc"
+QTEST_MAIN(blahTest)
+#include "blahTest.moc"
