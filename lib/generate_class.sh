@@ -21,3 +21,5 @@ EOF
 cat > "$1.cpp" << EOF
 #include "$1.h"
 EOF
+
+sed "s/\${BLANK}/$1.cpp \${BLANK}/" -i CMakeLists.txt
