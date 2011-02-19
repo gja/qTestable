@@ -1,21 +1,25 @@
 cmake_minimum_required(VERSION 2.8)
+project(helloworld)
 
-PROJECT(helloworld)
+option(USE_TEST "Generate Test Libraries" ON)
 
-OPTION(USE_TEST "Generate Test Libraries" ON)
+set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 
-FIND_PACKAGE(Qt4 REQUIRED)
+find_package(Qt4 REQUIRED)
+find_package(Qxt REQUIRED)
 
 if(USE_TEST)
   set(QT_USE_QTTEST TRUE)
 endif(USE_TEST)
 
-INCLUDE(${QT_USE_FILE})
-ADD_DEFINITIONS(${QT_DEFINITIONS})
+include(${QT_USE_FILE})
+add_definitions(${QT_DEFINITIONS})
+include_directories(include)
 
-INCLUDE_DIRECTORIES(include)
-ADD_SUBDIRECTORY(lib bin)
+set(LIBRARIES ${QT_LIBRARIES} ${QXT_LIBRARIES})
+
+add_subdirectory(lib bin)
 
 if(USE_TEST)
-  ADD_SUBDIRECTORY(test)
+  add_subdirectory(test)
 endif(USE_TEST)
