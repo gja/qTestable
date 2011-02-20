@@ -3,18 +3,19 @@
 
 struct QTestableApplicationPrivate
 {
-  int port;
+  bool isEnabled;
 };
 
-QTestableApplication::QTestableApplication(int argc, char **argv) : QApplication(argc, argv)
+QTestableApplication::QTestableApplication(bool isEnabled)
 {
   d = new QTestableApplicationPrivate();
+  d->isEnabled = isEnabled;
+}
 
-  QStringList args = arguments();
-  QStringList &args2 = args;
-
-  ConfigParser parser(args);
-  d->port = parser.port;
+QTestableApplication::QTestableApplication(const QStringList &arguments)
+{
+  ConfigParser parser(arguments);
+  QTestableApplication(parser.isEnabled);
 }
 
 QTestableApplication::~QTestableApplication()

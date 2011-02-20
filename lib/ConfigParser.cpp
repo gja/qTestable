@@ -2,15 +2,11 @@
 
 #include <QRegExp>
 
-ConfigParser::ConfigParser(QStringList &arguments) : port(0)
+ConfigParser::ConfigParser(const QStringList &arguments) : isEnabled(false)
 {
   foreach(QString string, arguments)
   {
-    QRegExp regex("--qTestable-port=(\\d+)");
-    if(regex.indexIn(string) != -1)
-    {
-      arguments.removeAll(string);
-      port = regex.cap(1).toInt();
-    }
+    if (string == "--enable-qTestable") isEnabled = true;
+    if (string == "--disable-qTestable") isEnabled = false;
   }
 }

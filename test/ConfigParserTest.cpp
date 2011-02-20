@@ -8,25 +8,22 @@ class ConfigParserTest : public QObject
     void shouldBeAbleToReadPort_data()
     {
       QTest::addColumn<QStringList>("arguments");
-      QTest::addColumn<int>("port");
-      QTest::addColumn<int>("finalSize");
+      QTest::addColumn<bool>("isEnabled");
 
-      QTest::newRow("Empty List")<<QStringList()<<0<<0;
-      QTest::newRow("Irrelevant Arguments")<<(QStringList()<<"foo"<<"bar"<<"baz")<<0<<3;
-      QTest::newRow("invalid-noEquals")<<(QStringList()<<"foo"<<"--qTestable-port"<<"baz")<<0<<3;
-      QTest::newRow("invalid-noValue")<<(QStringList()<<"foo"<<"--qTestable-port="<<"baz")<<0<<3;
-      QTest::newRow("A Valid Port")<<(QStringList()<<"foo"<<"--qTestable-port=1124"<<"baz")<<1124<<2;
+      QTest::newRow("Empty List")<<QStringList()<<false;
+      QTest::newRow("Irrelevant Arguments")<<(QStringList()<<"foo"<<"bar"<<"baz")<<false;
+      QTest::newRow("enabled")<<(QStringList()<<"foo"<<"--enable-qTestable"<<"baz")<<true;
+      QTest::newRow("disabled")<<(QStringList()<<"foo"<<"--disable-qTestable"<<"baz")<<false;
+      QTest::newRow("both present")<<(QStringList()<<"foo"<<"--enable-qTestable"<<"--disable-qTestable"<<"baz")<<false;
     }
 
     void shouldBeAbleToReadPort()
     {
       QFETCH(QStringList, arguments);
-      QFETCH(int, port);
-      QFETCH(int, finalSize);
+      QFETCH(bool, isEnabled);
 
       ConfigParser parser(arguments);
-      QCOMPARE(parser.port, port);
-      QCOMPARE(arguments.size(), finalSize);
+      QCOMPARE(parser.isEnabled, isEnabled);
     }
 };
 

@@ -6,9 +6,9 @@
 class ConfigParser
 {
   public:
-    ConfigParser(QStringList &arguments);
+    ConfigParser(const QStringList &arguments);
 
-    int port;
+    bool isEnabled;
 };
 
 #endif

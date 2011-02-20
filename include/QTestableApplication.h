@@ -3,12 +3,13 @@
 
 #include <QApplication>
 
-class QTestableApplication : public QApplication
+class QTestableApplication
 {
   struct QTestableApplicationPrivate *d;
 
   public:
-    QTestableApplication(int argc, char **argv);
+    QTestableApplication(const QStringList &arguments);
+    QTestableApplication(bool isEnabled = true);
     ~QTestableApplication();
 };
 
