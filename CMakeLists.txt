@@ -10,6 +10,7 @@ set(QT_USE_QTDBUS TRUE)
 
 if(USE_TEST)
   set(QT_USE_QTTEST TRUE)
+  enable_testing()
 endif(USE_TEST)
 
 include(${QT_USE_FILE})

@@ -1,5 +1,3 @@
-ENABLE_TESTING()
-
 include_directories(${CMAKE_SOURCE_DIR}/lib ${CMAKE_CURRENT_BINARY_DIR})
 
 macro (do_test arg)
