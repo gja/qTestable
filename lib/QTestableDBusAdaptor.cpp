@@ -41,3 +41,11 @@ QString QTestableDBusAdaptor::Automate(const QString &request)
     return response;
 }
 
+bool QTestableDBusAdaptor::IsEnabled()
+{
+    // handle method call org.qTestable.IsEnabled
+    bool response;
+    QMetaObject::invokeMethod(parent(), "IsEnabled", Q_RETURN_ARG(bool, response));
+    return response;
+}
+

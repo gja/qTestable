@@ -1,11 +1,16 @@
 #! /bin/sh
 
 SERVER=org.qTestable.FT1
-
 ./01_a_simple_button --enable-qTestable &
 CHILDPID=$!
 
-sleep 0.25
+function wait_for_start()
+{
+  while [ "`qdbus $SERVER / org.qTestable.IsEnabled`" != "true" ]; do
+    echo "sleep"
+    sleep 0.1
+  done
+}
 
 function send_signal()
 {
@@ -18,6 +23,8 @@ function send_signal()
     exit 1
   fi
 }
+
+wait_for_start
 
 send_signal blah/button/click
 send_signal blah/label/getText clicked

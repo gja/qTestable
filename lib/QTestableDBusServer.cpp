@@ -10,3 +10,8 @@ QString QTestableDBusServer::Automate(const QString &request)
 {
   return dispatcher->handleRequest(request);
 }
+
+bool QTestableDBusServer::IsEnabled()
+{
+  return true;
+}

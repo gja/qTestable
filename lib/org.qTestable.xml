@@ -4,4 +4,7 @@
       <arg name="request" type="s" direction="in" />
       <arg name="response" type="s" direction="out" />
     </method>
+    <method name="IsEnabled">
+      <arg name="response" type="b" direction="out" />
+    </method>
 </node>

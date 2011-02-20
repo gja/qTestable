@@ -9,8 +9,8 @@
  * before re-generating it.
  */
 
-#ifndef QTESTABLEDBUSADAPTOR_H_1298186492
-#define QTESTABLEDBUSADAPTOR_H_1298186492
+#ifndef QTESTABLEDBUSADAPTOR_H_1298229756
+#define QTESTABLEDBUSADAPTOR_H_1298229756
 
 #include <QtCore/QObject>
 #include <QtDBus/QtDBus>
@@ -34,6 +34,9 @@ class QTestableDBusAdaptor: public QDBusAbstractAdaptor
 "      <arg direction=\"in\" type=\"s\" name=\"request\"/>\n"
 "      <arg direction=\"out\" type=\"s\" name=\"response\"/>\n"
 "    </method>\n"
+"    <method name=\"IsEnabled\">\n"
+"      <arg direction=\"out\" type=\"b\" name=\"response\"/>\n"
+"    </method>\n"
 "  </interface>\n"
         "")
 public:
@@ -43,6 +46,7 @@ public:
 public: // PROPERTIES
 public Q_SLOTS: // METHODS
     QString Automate(const QString &request);
+    bool IsEnabled();
 Q_SIGNALS: // SIGNALS
 };
 
