@@ -16,13 +16,13 @@ class ActiveQTestableApplicationPrivate : public QTestableApplicationPrivate
   QTestableDBusServer *server;
 
   public:
-    ActiveQTestableApplicationPrivate()
+    ActiveQTestableApplicationPrivate(const QString &serviceName)
     {
       server = new QTestableDBusServer();
       adapter = new QTestableDBusAdaptor(server);
 
       QDBusConnection connection = QDBusConnection::sessionBus();
-      connection.registerService("org.qTestable");
+      connection.registerService(serviceName);
       connection.registerObject("/", server);
     }
 };
@@ -31,15 +31,15 @@ class DisabledQTestableApplicationPrivate : public QTestableApplicationPrivate
 {
 };
 
-QTestableApplication::QTestableApplication(bool isEnabled)
+QTestableApplication::QTestableApplication(const QString &serviceName, bool isEnabled)
 {  
-  d = isEnabled ? (QTestableApplicationPrivate *) new ActiveQTestableApplicationPrivate() : new DisabledQTestableApplicationPrivate();
+  d = isEnabled ? (QTestableApplicationPrivate *) new ActiveQTestableApplicationPrivate(serviceName) : new DisabledQTestableApplicationPrivate();
 }
 
-QTestableApplication::QTestableApplication(const QStringList &arguments)
+QTestableApplication::QTestableApplication(const QString &serviceName, const QStringList &arguments)
 {
   ConfigParser parser(arguments);
-  QTestableApplication(parser.isEnabled);
+  QTestableApplication(serviceName, parser.isEnabled);
 }
 
 QTestableApplication::~QTestableApplication()

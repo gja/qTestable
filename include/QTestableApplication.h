@@ -8,8 +8,8 @@ class QTestableApplication
   struct QTestableApplicationPrivate *d;
 
   public:
-    QTestableApplication(const QStringList &arguments);
-    QTestableApplication(bool isEnabled = true);
+    QTestableApplication(const QString &serviceName, const QStringList &arguments); // Recommended API, enabled if --enable-qTestable
+    QTestableApplication(const QString &serviceName, bool isEnabled = true);
     ~QTestableApplication();
 };
 

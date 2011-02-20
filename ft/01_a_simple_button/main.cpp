@@ -6,7 +6,7 @@ int main(int argc, char ** argv)
 {
   QApplication app(argc, argv);
 
-  QTestableApplication testApp(app.arguments());
+  QTestableApplication testApp("org.qTestable.FT1", app.arguments());
 
   return app.exec();
 }
