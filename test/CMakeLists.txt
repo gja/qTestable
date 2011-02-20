@@ -13,3 +13,4 @@ endmacro (do_test)
 
 do_test(ConfigParserTest)
 do_test(QTestableAutomationRequestTest)
+do_test(DispatcherTest)

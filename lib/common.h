@@ -3,5 +3,6 @@
 
 #include <QString>
 #include <QStringList>
+#include <QHash>
 
 #endif
