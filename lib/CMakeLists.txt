@@ -1,5 +1,5 @@
 SET(BLANK)
-SET(qTestable_SOURCES QTestableService.cpp ConfigParser.cpp ParseRestRequest.cpp QTestableDBusAdaptor.cpp QTestableDBusServer.cpp ${BLANK})
+SET(qTestable_SOURCES QTestableService.cpp ConfigParser.cpp QTestableAutomationRequest.cpp QTestableDBusAdaptor.cpp QTestableDBusServer.cpp ${BLANK})
 SET(qTestable_HEADERS QTestableDBusAdaptor.h QTestableDBusServer.h)
 QT4_WRAP_CPP(qTestable_HEADERS_MOC ${qTestable_HEADERS})
 

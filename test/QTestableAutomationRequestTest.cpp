@@ -1,11 +1,11 @@
 #include <QTest>
-#include "ParseRestRequest.h"
+#include "QTestableAutomationRequest.h"
 
-class ParseRestRequestTest : public QObject
+class QTestableAutomationRequestTest : public QObject
 {
   Q_OBJECT
   private slots:
-    void ShouldBeAbleToParseRestRequest_data()
+    void ShouldBeAbleToQTestableAutomationRequest_data()
     {
       QTest::addColumn<QString>("request");
       QTest::addColumn<bool>("isValid");
@@ -20,7 +20,7 @@ class ParseRestRequestTest : public QObject
       QTest::newRow("An Request With Arguments with /")<<"button/myButton/click/foo/bar"<<true<<"button"<<"myButton"<<"click"<<"foo/bar";
     }
 
-    void ShouldBeAbleToParseRestRequest()
+    void ShouldBeAbleToQTestableAutomationRequest()
     {
       QFETCH(QString, request);
       QFETCH(bool, isValid);
@@ -29,7 +29,7 @@ class ParseRestRequestTest : public QObject
       QFETCH(QString, command);
       QFETCH(QString, arguments);
 
-      ParseRestRequest parser(request);
+      QTestableAutomationRequest parser(request);
 
       QCOMPARE(isValid, parser.isValid);
       QCOMPARE(targetClass, parser.targetClass);
@@ -39,5 +39,5 @@ class ParseRestRequestTest : public QObject
     }
 };
 
-QTEST_MAIN(ParseRestRequestTest)
-#include "ParseRestRequestTest.moc"
+QTEST_MAIN(QTestableAutomationRequestTest)
+#include "QTestableAutomationRequestTest.moc"

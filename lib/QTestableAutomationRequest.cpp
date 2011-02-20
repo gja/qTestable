@@ -1,8 +1,8 @@
-#include "ParseRestRequest.h"
+#include "QTestableAutomationRequest.h"
 
 #include <QRegExp>
 
-ParseRestRequest::ParseRestRequest(const QString &request)
+QTestableAutomationRequest::QTestableAutomationRequest(const QString &request)
 {
   QRegExp reg("([^/]*)/([^/]*)/(.*)");
   QRegExp getCommand("([^/]*)/(.*)");
