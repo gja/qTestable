@@ -32,7 +32,7 @@ class DisabledQTestableApplicationPrivate : public QTestableApplicationPrivate
 };
 
 QTestableApplication::QTestableApplication(bool isEnabled)
-{
+{  
   d = isEnabled ? (QTestableApplicationPrivate *) new ActiveQTestableApplicationPrivate() : new DisabledQTestableApplicationPrivate();
 }
 

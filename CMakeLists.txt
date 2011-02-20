@@ -22,4 +22,5 @@ add_subdirectory(lib bin)
 
 if(USE_TEST)
   add_subdirectory(test)
+  add_subdirectory(ft)
 endif(USE_TEST)

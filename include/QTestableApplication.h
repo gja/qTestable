@@ -1,7 +1,7 @@
 #ifndef QTESTABLEAPPLICATION_H
 #define QTESTABLEAPPLICATION_H
 
-#include <QApplication>
+#include <QStringList>
 
 class QTestableApplication
 {
