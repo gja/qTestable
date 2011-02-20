@@ -36,6 +36,7 @@ class QTestableAutomationRequestTest : public QObject
       QCOMPARE(targetObject, parser.targetObject);
       QCOMPARE(command, parser.command);
       QCOMPARE(arguments, parser.arguments);
+      QCOMPARE(request, parser.originalRequest);
     }
 };
 

@@ -12,6 +12,7 @@ class QTestableAutomationRequest
     QString targetObject;
     QString command;
     QString arguments;
+    QString originalRequest;
 };
 
 #endif

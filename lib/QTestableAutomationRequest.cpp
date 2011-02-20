@@ -8,6 +8,7 @@ QTestableAutomationRequest::QTestableAutomationRequest(const QString &request)
   QRegExp getCommand("([^/]*)/(.*)");
 
   isValid = reg.indexIn(request) != -1;
+  originalRequest = request;
 
   if(isValid)
   {
