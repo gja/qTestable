@@ -1,5 +1,5 @@
-SET(SOURCES main.cpp)
-SET(HEADERS )
+SET(SOURCES main.cpp LabelToButtonConnector.cpp)
+SET(HEADERS LabelToButtonConnector.h)
 QT4_WRAP_CPP(HEADERS_MOC ${HEADERS})
 
 add_executable(01_a_simple_button ${SOURCES} ${HEADERS_MOC})

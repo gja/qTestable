@@ -1,7 +1,9 @@
 #include <QApplication>
 #include <QPushButton>
+#include <QLabel>
 
 #include <QTestableService.h>
+#include "LabelToButtonConnector.h"
 
 int main(int argc, char ** argv)
 {
@@ -11,6 +13,11 @@ int main(int argc, char ** argv)
 
   QPushButton button("foobar");
   button.show();
+
+  QLabel label("blah");
+  label.show();
+
+  LabelToButtonConnector connector(&button, &label);
 
   return app.exec();
 }
