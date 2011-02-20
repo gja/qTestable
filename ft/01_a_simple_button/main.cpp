@@ -1,13 +1,13 @@
 #include <QApplication>
 #include <QPushButton>
 
-#include <QTestableApplication.h>
+#include <QTestableService.h>
 
 int main(int argc, char ** argv)
 {
   QApplication app(argc, argv);
 
-  QTestableApplication testApp("org.qTestable.FT1", app.arguments());
+  QTestableService::startService("org.qTestable.FT1", app.arguments());
 
   QPushButton button("foobar");
   button.show();
