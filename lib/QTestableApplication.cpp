@@ -41,8 +41,3 @@ QTestableApplication::QTestableApplication(const QString &serviceName, const QSt
   ConfigParser parser(arguments);
   QTestableApplication(serviceName, parser.isEnabled);
 }
-
-QTestableApplication::~QTestableApplication()
-{
-  delete d;
-}

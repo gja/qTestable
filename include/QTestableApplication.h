@@ -10,7 +10,6 @@ class QTestableApplication
   public:
     QTestableApplication(const QString &serviceName, const QStringList &arguments); // Recommended API, enabled if --enable-qTestable
     QTestableApplication(const QString &serviceName, bool isEnabled = true);
-    ~QTestableApplication();
 };
 
 #endif
