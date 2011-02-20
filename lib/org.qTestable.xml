@@ -1,0 +1,7 @@
+<node>
+  <interface name="org.qTestable">
+    <method name="Automate">
+      <arg name="request" type="s" direction="in" />
+      <arg name="response" type="s" direction="out" />
+    </method>
+</node>
