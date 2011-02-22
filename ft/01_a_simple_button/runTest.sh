@@ -26,6 +26,6 @@ function send_signal()
 
 wait_for_start
 
-send_signal blah/button/click
-send_signal blah/label/getText clicked
-send_signal blah/app/quit
+send_signal blah/click/button
+send_signal blah/getText/label clicked
+send_signal blah/quit/app

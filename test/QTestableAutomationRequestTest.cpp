@@ -15,9 +15,9 @@ class QTestableAutomationRequestTest : public QObject
       QTest::addColumn<QString>("arguments");
 
       QTest::newRow("An Empty Request")<<""<<false<<""<<""<<""<<"";
-      QTest::newRow("An Request Without Arguments")<<"button/myButton/click"<<true<<"button"<<"myButton"<<"click"<<"";
-      QTest::newRow("An Request With Arguments")<<"button/myButton/click/foo"<<true<<"button"<<"myButton"<<"click"<<"foo";
-      QTest::newRow("An Request With Arguments with /")<<"button/myButton/click/foo/bar"<<true<<"button"<<"myButton"<<"click"<<"foo/bar";
+      QTest::newRow("An Request Without Arguments")<<"button/click/myButton"<<true<<"button"<<"myButton"<<"click"<<"";
+      QTest::newRow("An Request With Arguments")<<"button/click/myButton/foo"<<true<<"button"<<"myButton"<<"click"<<"foo";
+      QTest::newRow("An Request With Arguments with /")<<"button/click/myButton/foo/bar"<<true<<"button"<<"myButton"<<"click"<<"foo/bar";
     }
 
     void ShouldBeAbleToQTestableAutomationRequest()

@@ -13,13 +13,13 @@ QTestableAutomationRequest::QTestableAutomationRequest(const QString &request)
   if(isValid)
   {
     targetClass = reg.cap(1);
-    targetObject = reg.cap(2);
-    QString commandWithArgs = reg.cap(3);
+    command = reg.cap(2);
+    QString objectWithArgs = reg.cap(3);
 
-    if(getCommand.indexIn(commandWithArgs) == -1)
-      command = commandWithArgs;
+    if(getCommand.indexIn(objectWithArgs) == -1)
+      targetObject = objectWithArgs;
     else {
-      command = getCommand.cap(1);
+      targetObject = getCommand.cap(1);
       arguments = getCommand.cap(2);
     }
   }

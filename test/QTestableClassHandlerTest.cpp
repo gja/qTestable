@@ -27,7 +27,7 @@ class QTestableClassHandlerTest : public QObject
     {
       Dispatcher dispatcher;
       dispatcher.registerClass("dummy", new DummyHandler());
-      QCOMPARE(dispatcher.handleRequest("dummy/obj/foo"), QString("foo"));
+      QCOMPARE(dispatcher.handleRequest("dummy/foo/obj"), QString("foo"));
     }
 
     void shouldBeAbleToProvideACallbackForAnInvalidRequest()
@@ -41,7 +41,7 @@ class QTestableClassHandlerTest : public QObject
     {
       Dispatcher dispatcher;
       dispatcher.setInvalidRequestHandler(new DummyHandler());
-      QCOMPARE(dispatcher.handleRequest("dummy/obj/uaohtneunah"), QString("invalid"));
+      QCOMPARE(dispatcher.handleRequest("dummy/uaohtneunah/obj"), QString("invalid"));
     }
 };
 
