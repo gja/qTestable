@@ -6,7 +6,7 @@
 
 #include "QTestableAutomationRequest.h"
 
-class IQTestableClassHandler
+class IQTestableClassHandler : public QObject
 {
   public:
     virtual QString handleRequest(QObject *object, const QTestableAutomationRequest &request) = 0;
