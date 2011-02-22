@@ -15,8 +15,10 @@ class QTestableService
     static void startService(const QString &serviceName, bool isEnabled = true);
 
     static void registerClass(const QString &className, QTestableClassHandler *handler);
+    static void unRegisterClass(const QString &className);
     static void registerInvalidRequestHandler(QTestableClassHandler *handler);
     static void registerObject(const QString &objectName, QObject *handler);
+    static void unRegisterObject(const QString &objectName);
 };
 
 #endif

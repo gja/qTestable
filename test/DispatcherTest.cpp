@@ -28,7 +28,8 @@ class ReturnObjectNameHandler : public QTestableClassHandler
 {
     virtual QString handleRequest(QObject *object, const QTestableAutomationRequest &request)
     {
-      return ((ObjectWithName *) object)->getName();
+      if (object == NULL) return "null";
+      return ((ObjectWithName *) object)->getName();      
     }
 };
 
@@ -46,6 +47,15 @@ class DispatcherTest : public QObject
       QCOMPARE(dispatcher.handleRequest("class1/button1/click"), QString("class1"));
       QCOMPARE(dispatcher.handleRequest("class2/button1/click"), QString("class2"));
       QCOMPARE(dispatcher.handleRequest("invalid"), QString(""));
+    }
+
+    void shouldBeAbleToUnregisterAClass()
+    {
+      Dispatcher dispatcher;
+      dispatcher.registerClass("class1", new ReturnNameHandler("class1"));
+      dispatcher.unRegisterClass("class1");      
+
+      QCOMPARE(dispatcher.handleRequest("class1/button1/click"), QString(""));
     }
 
     void shouldBeAbleToRegisterAnInvalidRequestHandler()
@@ -67,6 +77,16 @@ class DispatcherTest : public QObject
 
       QCOMPARE(dispatcher.handleRequest("class1/button1/click"), QString("button1"));
       QCOMPARE(dispatcher.handleRequest("class1/button2/click"), QString("button2"));
+    }
+
+    void shouldBeAbleToUnregisterAnObject()
+    {
+      Dispatcher dispatcher;
+      dispatcher.registerClass("class1", new ReturnObjectNameHandler());
+      dispatcher.registerObject("button1", new ObjectWithName("button1"));
+      dispatcher.unRegisterObject("button1");
+
+      QCOMPARE(dispatcher.handleRequest("class1/button1/click"), QString("null"));
     }
 };
 

@@ -11,8 +11,10 @@ class QTestableServicePrivate
   friend class QTestableService;
   public:
     virtual void registerClass(const QString &className, QTestableClassHandler *handler) = 0;
+    virtual void unRegisterClass(const QString &className) = 0;
     virtual void registerInvalidRequestHandler(QTestableClassHandler *handler) = 0;
     virtual void registerObject(const QString &objectName, QObject *handler) = 0;
+    virtual void unRegisterObject(const QString &objectName) = 0;
 };
 
 class ActiveQTestableServicePrivate : public QTestableServicePrivate
@@ -37,6 +39,11 @@ class ActiveQTestableServicePrivate : public QTestableServicePrivate
       dispatcher.registerClass(className, handler);
     }
 
+    virtual void unRegisterClass(const QString &className) 
+    {
+      dispatcher.unRegisterClass(className);
+    }
+
     virtual void registerInvalidRequestHandler(QTestableClassHandler *handler) 
     {
       dispatcher.setInvalidRequestHandler(handler);
@@ -46,13 +53,20 @@ class ActiveQTestableServicePrivate : public QTestableServicePrivate
     {
       dispatcher.registerObject(objectName, handler);
     }
+
+    virtual void unRegisterObject(const QString &objectName) 
+    {
+      dispatcher.unRegisterObject(objectName);
+    }
 };
 
 class DisabledQTestableServicePrivate : public QTestableServicePrivate
 {
     virtual void registerClass(const QString &className, QTestableClassHandler *handler) {};
+    virtual void unRegisterClass(const QString &className) {};
     virtual void registerInvalidRequestHandler(QTestableClassHandler *handler) {};
     virtual void registerObject(const QString &objectName, QObject *handler) {};
+    virtual void unRegisterObject(const QString &objectName) {};
 };
 
 QTestableServicePrivate *QTestableService::d;
@@ -72,6 +86,11 @@ void QTestableService::registerClass(const QString &className, QTestableClassHan
   d->registerClass(className, handler);
 }
 
+void QTestableService::unRegisterClass(const QString &className)
+{
+  d->unRegisterClass(className);
+}
+
 void QTestableService::registerInvalidRequestHandler(QTestableClassHandler *handler)
 {
   d->registerInvalidRequestHandler(handler);
@@ -80,4 +99,9 @@ void QTestableService::registerInvalidRequestHandler(QTestableClassHandler *hand
 void QTestableService::registerObject(const QString &objectName, QObject *handler)
 {
   d->registerObject(objectName, handler);
+}
+
+void QTestableService::unRegisterObject(const QString &objectName)
+{
+  d->unRegisterObject(objectName);
 }

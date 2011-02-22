@@ -20,9 +20,19 @@ void Dispatcher::registerClass(const QString &className, QTestableClassHandler *
   classMap.insert(className, handler);
 }
 
+void Dispatcher::unRegisterClass(const QString &className)
+{
+  classMap.remove(className);
+}
+
 void Dispatcher::registerObject(const QString &objectName, QObject *object)
 {
   objectMap.insert(objectName, object);
+}
+
+void Dispatcher::unRegisterObject(const QString &objectName)
+{
+  objectMap.remove(objectName);
 }
 
 void Dispatcher::setInvalidRequestHandler(QTestableClassHandler *handler)
