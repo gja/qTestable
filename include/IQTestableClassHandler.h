@@ -1,12 +1,12 @@
-#ifndef QTESTABLECLASSHANDLER_H
-#define QTESTABLECLASSHANDLER_H
+#ifndef IQTESTABLECLASSHANDLER_H
+#define IQTESTABLECLASSHANDLER_H
 
 #include <QObject>
 #include <QString>
 
 #include "QTestableAutomationRequest.h"
 
-class QTestableClassHandler
+class IQTestableClassHandler
 {
   public:
     virtual QString handleRequest(QObject *object, const QTestableAutomationRequest &request) = 0;

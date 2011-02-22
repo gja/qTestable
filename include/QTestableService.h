@@ -2,7 +2,7 @@
 #define QTESTABLESERVICE_H
 
 #include <QStringList>
-struct QTestableClassHandler;
+struct IQTestableClassHandler;
 
 class QTestableService
 {
@@ -14,9 +14,9 @@ class QTestableService
     static void startService(const QString &serviceName, const QStringList &arguments);
     static void startService(const QString &serviceName, bool isEnabled = true);
 
-    static void registerClass(const QString &className, QTestableClassHandler *handler);
+    static void registerClass(const QString &className, IQTestableClassHandler *handler);
     static void unRegisterClass(const QString &className);
-    static void registerInvalidRequestHandler(QTestableClassHandler *handler);
+    static void registerInvalidRequestHandler(IQTestableClassHandler *handler);
     static void registerObject(const QString &objectName, QObject *handler);
     static void unRegisterObject(const QString &objectName);
 };

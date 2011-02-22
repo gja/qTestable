@@ -1,8 +1,8 @@
 #include <QTest>
 #include "Dispatcher.h"
-#include "QTestableClassHandler.h"
+#include "IQTestableClassHandler.h"
 
-class ReturnNameHandler : public QTestableClassHandler
+class ReturnNameHandler : public IQTestableClassHandler
 {
   QString name;
   public:
@@ -24,7 +24,7 @@ class ObjectWithName : public QObject
     }
 };
 
-class ReturnObjectNameHandler : public QTestableClassHandler
+class ReturnObjectNameHandler : public IQTestableClassHandler
 {
     virtual QString handleRequest(QObject *object, const QTestableAutomationRequest &request)
     {

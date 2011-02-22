@@ -10,9 +10,9 @@ class QTestableServicePrivate
 {
   friend class QTestableService;
   public:
-    virtual void registerClass(const QString &className, QTestableClassHandler *handler) = 0;
+    virtual void registerClass(const QString &className, IQTestableClassHandler *handler) = 0;
     virtual void unRegisterClass(const QString &className) = 0;
-    virtual void registerInvalidRequestHandler(QTestableClassHandler *handler) = 0;
+    virtual void registerInvalidRequestHandler(IQTestableClassHandler *handler) = 0;
     virtual void registerObject(const QString &objectName, QObject *handler) = 0;
     virtual void unRegisterObject(const QString &objectName) = 0;
 };
@@ -34,7 +34,7 @@ class ActiveQTestableServicePrivate : public QTestableServicePrivate
       connection.registerObject("/", server);
     }
 
-    virtual void registerClass(const QString &className, QTestableClassHandler *handler) 
+    virtual void registerClass(const QString &className, IQTestableClassHandler *handler) 
     {
       dispatcher.registerClass(className, handler);
     }
@@ -44,7 +44,7 @@ class ActiveQTestableServicePrivate : public QTestableServicePrivate
       dispatcher.unRegisterClass(className);
     }
 
-    virtual void registerInvalidRequestHandler(QTestableClassHandler *handler) 
+    virtual void registerInvalidRequestHandler(IQTestableClassHandler *handler) 
     {
       dispatcher.setInvalidRequestHandler(handler);
     }
@@ -62,9 +62,9 @@ class ActiveQTestableServicePrivate : public QTestableServicePrivate
 
 class DisabledQTestableServicePrivate : public QTestableServicePrivate
 {
-    virtual void registerClass(const QString &className, QTestableClassHandler *handler) {};
+    virtual void registerClass(const QString &className, IQTestableClassHandler *handler) {};
     virtual void unRegisterClass(const QString &className) {};
-    virtual void registerInvalidRequestHandler(QTestableClassHandler *handler) {};
+    virtual void registerInvalidRequestHandler(IQTestableClassHandler *handler) {};
     virtual void registerObject(const QString &objectName, QObject *handler) {};
     virtual void unRegisterObject(const QString &objectName) {};
 };
@@ -81,7 +81,7 @@ void QTestableService::startService(const QString &serviceName, const QStringLis
   startService(serviceName, parser.isEnabled);
 }
 
-void QTestableService::registerClass(const QString &className, QTestableClassHandler *handler)
+void QTestableService::registerClass(const QString &className, IQTestableClassHandler *handler)
 {
   d->registerClass(className, handler);
 }
@@ -91,7 +91,7 @@ void QTestableService::unRegisterClass(const QString &className)
   d->unRegisterClass(className);
 }
 
-void QTestableService::registerInvalidRequestHandler(QTestableClassHandler *handler)
+void QTestableService::registerInvalidRequestHandler(IQTestableClassHandler *handler)
 {
   d->registerInvalidRequestHandler(handler);
 }
