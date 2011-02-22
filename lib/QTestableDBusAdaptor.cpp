@@ -49,3 +49,19 @@ bool QTestableDBusAdaptor::IsEnabled()
     return response;
 }
 
+QStringList QTestableDBusAdaptor::RegisteredClasses()
+{
+    // handle method call org.qTestable.RegisteredClasses
+    QStringList response;
+    QMetaObject::invokeMethod(parent(), "RegisteredClasses", Q_RETURN_ARG(QStringList, response));
+    return response;
+}
+
+QStringList QTestableDBusAdaptor::RegisteredObjects()
+{
+    // handle method call org.qTestable.RegisteredObjects
+    QStringList response;
+    QMetaObject::invokeMethod(parent(), "RegisteredObjects", Q_RETURN_ARG(QStringList, response));
+    return response;
+}
+

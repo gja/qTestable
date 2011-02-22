@@ -88,6 +88,16 @@ class DispatcherTest : public QObject
 
       QCOMPARE(dispatcher.handleRequest("class1/button1/click"), QString("null"));
     }
+
+    void shouldBeAbleToGetListOfRegisteredObjectsAndClasses()
+    {
+      Dispatcher dispatcher;
+      dispatcher.registerClass("class1", new ReturnObjectNameHandler());
+      dispatcher.registerObject("button1", new ObjectWithName("button1"));
+
+      QCOMPARE(dispatcher.registeredObjects().size(), 1);
+      QCOMPARE(dispatcher.registeredClasses().size(), 1);
+    }
 };
 
 QTEST_MAIN(DispatcherTest)

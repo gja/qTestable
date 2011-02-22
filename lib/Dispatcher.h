@@ -16,7 +16,10 @@ class Dispatcher
     void registerObject(const QString &objectName, QObject *object);
     void unRegisterObject(const QString &objectName);
     void setInvalidRequestHandler(QTestableClassHandler *handler);
+
     QString handleRequest(const QString &request);
+    QStringList registeredObjects();
+    QStringList registeredClasses();
 
     Dispatcher();
 };

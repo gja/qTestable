@@ -16,6 +16,8 @@ class QTestableDBusServer : public QObject
 
   public slots:
     QString Automate(const QString &request);
+    QStringList RegisteredClasses();
+    QStringList RegisteredObjects();
     bool IsEnabled();
 };
 

@@ -52,3 +52,13 @@ QString Dispatcher::handleRequest(const QString &request)
 
   return handler->handleRequest(objectMap[req.targetObject], req);
 }
+
+QStringList Dispatcher::registeredObjects()
+{
+  return objectMap.keys();
+}
+
+QStringList Dispatcher::registeredClasses()
+{
+  return classMap.keys();
+}

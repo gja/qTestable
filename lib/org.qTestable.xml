@@ -4,6 +4,12 @@
       <arg name="request" type="s" direction="in" />
       <arg name="response" type="s" direction="out" />
     </method>
+    <method name="RegisteredClasses">
+      <arg name="response" type="as" direction="out" />
+    </method>
+    <method name="RegisteredObjects">
+      <arg name="response" type="as" direction="out" />
+    </method>
     <method name="IsEnabled">
       <arg name="response" type="b" direction="out" />
     </method>
