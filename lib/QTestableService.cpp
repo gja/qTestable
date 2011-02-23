@@ -3,6 +3,7 @@
 #include "QTestableDBusAdaptor.h"
 #include "QTestableDBusServer.h"
 #include "Dispatcher.h"
+#include "StandardHandlers.h"
 
 #include <QDBusConnection>
 
@@ -17,6 +18,7 @@ namespace QTestable
       virtual void registerInvalidRequestHandler(IQTestableClassHandler *handler) = 0;
       virtual void registerObject(const QString &objectName, QObject *handler) = 0;
       virtual void unRegisterObject(const QString &objectName) = 0;
+      virtual void registerStandardHandlers() = 0;
   };
 
   class ActiveQTestableServicePrivate : public QTestableServicePrivate
@@ -60,6 +62,11 @@ namespace QTestable
       {
         dispatcher.unRegisterObject(objectName);
       }
+
+      virtual void registerStandardHandlers()
+      {
+        //NEXTHANDLERHERE
+      }
   };
 
   class DisabledQTestableServicePrivate : public QTestableServicePrivate
@@ -69,6 +76,7 @@ namespace QTestable
       virtual void registerInvalidRequestHandler(IQTestableClassHandler *handler) {};
       virtual void registerObject(const QString &objectName, QObject *handler) {};
       virtual void unRegisterObject(const QString &objectName) {};
+      virtual void registerStandardHandlers() {}
   };
 
   QTestableServicePrivate *QTestableService::d;
@@ -106,5 +114,10 @@ namespace QTestable
   void QTestableService::unRegisterObject(const QString &objectName)
   {
     d->unRegisterObject(objectName);
+  }
+
+  void QTestableService::registerStandardHandlers()
+  {
+    d->registerStandardHandlers();
   }
 }

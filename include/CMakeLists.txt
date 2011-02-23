@@ -5,6 +5,7 @@ INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/qTestable.pc
         PERMISSIONS OWNER_READ GROUP_READ WORLD_READ)
 
 INSTALL(FILES IQTestableClassHandler.h QTestableAutomationRequest.h QTestableClassHandler.h QTestable.h QTestableService.h
+                StandardHandlers.h
         DESTINATION include/qTestable
         PERMISSIONS OWNER_READ GROUP_READ WORLD_READ)
 

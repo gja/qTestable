@@ -17,6 +17,8 @@ namespace QTestable
       static void startService(const QString &serviceName, const QStringList &arguments);
       static void startService(const QString &serviceName, bool isEnabled = true);
 
+      static void registerStandardHandlers();
+
       static void registerClass(const QString &className, IQTestableClassHandler *handler);
       static void unRegisterClass(const QString &className);
       static void registerInvalidRequestHandler(IQTestableClassHandler *handler);

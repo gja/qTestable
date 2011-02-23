@@ -5,7 +5,7 @@ if [ "$1" == "" ]; then
   exit 1
 fi
 
-CLASSNAME="$1Handler"
+CLASSNAME="handler_for_$1"
 
 cat > "handlers/$CLASSNAME.h" << EOF
 #ifndef `echo $CLASSNAME | tr '[:lower:]' '[:upper:]'`_H
@@ -21,22 +21,26 @@ namespace QTestable
     Q_OBJECT
 
     public:
-      $CLASSNAME(QString aHandlerName = "$CLASSNAME");
+      $CLASSNAME(QString aHandlerName = "$CLASSNAME") : QNamedClassHandler(aHandlerName) {}
+
+    private slots:
+      // QString foo(QObject *object, const QTestableAutomationRequest &request)
   };
 }
 
 #endif
 EOF
 
-cat > "handlers/$CLASSNAME.cpp" << EOF
-#include "$CLASSNAME.h"
+#sed "s,\${BLANK},handlers/$CLASSNAME.h \${BLANK}," -i CMakeLists.txt
+sed "s,\${HBLANK},handlers/$CLASSNAME.h \${HBLANK}," -i CMakeLists.txt
+sed "s,//NEXTINCLUDEHERE,#include \"handlers/$CLASSNAME.h\"\n//NEXTINCLUDEHERE ," -i StandardHandlers.cpp
+sed "s,//NEXTHANDLERHERE,static IQTestableClassHandler *$1Handler();\n      //NEXTHANDLERHERE," -i ../include/StandardHandlers.h
+sed "s,//NEXTHANDLERHERE,dispatcher.registerClass(\"$1\"\, StandardHandlers::$1Handler());\n        //NEXTHANDLERHERE," -i QTestableService.cpp
 
-namespace QTestable
+cat >> StandardHandlers.cpp << EOF
+
+IQTestableClassHandler *QTestable::StandardHandlers::$1Handler()
 {
-  $CLASSNAME::$CLASSNAME(QString aHandlerName) : QNamedClassHandler(aHandlerName)
-  {}
+  return new $CLASSNAME("$1");
 }
 EOF
-
-sed "s,\${BLANK},handlers/$CLASSNAME.cpp \${BLANK}," -i CMakeLists.txt
-sed "s,\${HBLANK},handlers/$CLASSNAME.h \${HBLANK}," -i CMakeLists.txt

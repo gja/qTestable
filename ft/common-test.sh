@@ -4,9 +4,14 @@ CHILDPID=$!
 
 function wait_for_start()
 {
+  TRIES=0
   while [ "`qdbus $SERVER / org.qTestable.IsEnabled`" != "true" ]; do
-    echo "sleep"
     sleep 0.1
+    TRIES=$((TRIES+1))
+    if [ "$TRIES" -gt 150 ]; then
+      echo "Unable to connect";
+      exit -1
+    fi
   done
 }
 

@@ -2,3 +2,4 @@
 #include "QTestableAutomationRequest.h"
 #include "IQTestableClassHandler.h"
 #include "QTestableClassHandler.h"
+#include "StandardHandlers.h"
