@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8)
 project(qTestable)
-set(VERSION 0.0.1)
+set(VERSION 0.0.2)
 
 option(USE_TEST "Generate Test Libraries" OFF)
 

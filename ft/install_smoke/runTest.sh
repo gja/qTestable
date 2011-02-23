@@ -1,6 +1,6 @@
 #! /bin/sh
 
-SERVER=org.qTestable.FT2
+SERVER=org.qTestable.FT
 ./install_smoke --enable-qTestable &
 CHILDPID=$!
 
@@ -26,6 +26,6 @@ function send_signal()
 
 wait_for_start
 
-send_signal blah/click/button
-send_signal blah/getText/label clicked
-send_signal blah/quit/app
+send_signal button/click/button
+send_signal label/text/label clicked
+send_signal application/quit/app

@@ -12,7 +12,8 @@ int main(int argc, char ** argv)
 {
   QApplication app(argc, argv);
 
-  QTestableService::startService("org.qTestable.FT2", app.arguments());
+  QTestableService::startService("org.qTestable.FT", app.arguments());
+  QTestableService::registerStandardHandlers();
 
   QPushButton button("foobar");
   button.show();
@@ -20,7 +21,6 @@ int main(int argc, char ** argv)
   QLabel label("blah");
   label.show();
 
-  QTestableService::registerInvalidRequestHandler(new Handler());
   QTestableService::registerObject("button", &button);
   QTestableService::registerObject("label", &label);
   QTestableService::registerObject("app", &app);

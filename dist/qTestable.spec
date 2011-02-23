@@ -1,6 +1,6 @@
 Name:           qTestable
-Version:        0.0.1
-Release:        1%{?dist}
+Version:        0.0.2
+Release:        2%{?dist}
 Summary:        Library to write functional tests for Qt applications
 
 Group:          Applications/Publishing
