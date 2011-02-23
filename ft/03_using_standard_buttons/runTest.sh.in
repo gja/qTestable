@@ -3,5 +3,6 @@
 source @CMAKE_CURRENT_SOURCE_DIR@/../common-test.sh
 
 send_signal button/click/button
+send_signal button/text/button foobar
 send_signal label/text/label clicked
 send_signal application/quit/app

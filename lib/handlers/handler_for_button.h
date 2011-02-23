@@ -20,6 +20,11 @@ namespace QTestable
          ((QAbstractButton*) object)->click();
          return "";
        }
+
+       QString text(QObject *object, const QTestableAutomationRequest &request)
+       {
+         return ((QAbstractButton*) object)->text();
+       }
   };
 }
 
