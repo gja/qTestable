@@ -45,6 +45,13 @@ class QTestableClassHandlerTest : public QObject
       dispatcher.setInvalidRequestHandler(new DummyHandler());
       QCOMPARE(dispatcher.handleRequest("dummy/uaohtneunah/obj"), QString("invalid"));
     }
+    
+    void shouldHaveADefaultHandlerForNonExistingCommand()
+    {
+      Dispatcher dispatcher;
+      dispatcher.registerClass("dummy", new QNamedClassHandler("name"));
+      QCOMPARE(dispatcher.handleRequest("dummy/foo/obj"), QString("Error: Unable To Execute Command 'foo' in Handler 'name'. request = { targetObject = 'obj', targetClass = 'dummy', arguments = '' }"));
+    }
 };
 
 QTEST_MAIN(QTestableClassHandlerTest)

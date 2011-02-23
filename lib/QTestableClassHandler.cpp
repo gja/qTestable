@@ -14,4 +14,13 @@ namespace QTestable
     else
       return handleInvalidRequest(object, request);
   }
+
+  QNamedClassHandler::QNamedClassHandler(QString aHandlerName) : name(aHandlerName)
+  {}
+
+  QString QNamedClassHandler::handleInvalidRequest(QObject *object, const QTestableAutomationRequest &request)
+  {
+    return QString("Error: Unable To Execute Command '%1' in Handler '%2'. request = { targetObject = '%3', targetClass = '%4', arguments = '%5' }").
+                               arg(request.command).arg(name).arg(request.targetObject).arg(request.targetClass).arg(request.arguments);
+  }
 }
