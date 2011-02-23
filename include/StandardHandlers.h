@@ -8,6 +8,9 @@ namespace QTestable
   class StandardHandlers
   {
     public:
+      static IQTestableClassHandler *buttonHandler();
+      static IQTestableClassHandler *applicationHandler();
+      static IQTestableClassHandler *labelHandler();
       //NEXTHANDLERHERE
   };
 }

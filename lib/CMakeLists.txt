@@ -3,7 +3,8 @@ SET(HBLANK)
 SET(qTestable_SOURCES QTestableService.cpp ConfigParser.cpp QTestableAutomationRequest.cpp
       QTestableDBusAdaptor.cpp QTestableDBusServer.cpp Dispatcher.cpp QTestableClassHandler.cpp
       StandardHandlers.cpp ${BLANK})
-SET(qTestable_HEADERS QTestableDBusAdaptor.h QTestableDBusServer.h ${HBLANK})
+SET(qTestable_HEADERS QTestableDBusAdaptor.h QTestableDBusServer.h handlers/handler_for_button.h 
+      handlers/handler_for_application.h handlers/handler_for_label.h ${HBLANK})
 QT4_WRAP_CPP(qTestable_HEADERS_MOC ${qTestable_HEADERS})
 
 add_library(qTestable SHARED ${qTestable_SOURCES} ${qTestable_HEADERS_MOC})

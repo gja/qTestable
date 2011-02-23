@@ -65,6 +65,9 @@ namespace QTestable
 
       virtual void registerStandardHandlers()
       {
+        dispatcher.registerClass("button", StandardHandlers::buttonHandler());
+        dispatcher.registerClass("application", StandardHandlers::applicationHandler());
+        dispatcher.registerClass("label", StandardHandlers::labelHandler());
         //NEXTHANDLERHERE
       }
   };

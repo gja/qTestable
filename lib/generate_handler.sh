@@ -21,7 +21,7 @@ namespace QTestable
     Q_OBJECT
 
     public:
-      $CLASSNAME(QString aHandlerName = "$CLASSNAME") : QNamedClassHandler(aHandlerName) {}
+      $CLASSNAME(QString aHandlerName = "$1") : QNamedClassHandler(aHandlerName) {}
 
     private slots:
       // QString foo(QObject *object, const QTestableAutomationRequest &request)
