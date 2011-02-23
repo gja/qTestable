@@ -64,8 +64,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/*.so
 %{_includedir}/%{name}
 %{_datadir}/cmake/Modules/Find%{name}.cmake
+%{_libdir}/pkgconfig/*.pc
 
 
 %changelog
-* Wed Feb 23 2011 Tejas Dinkar <tejas@gja.in> - 0.8.4-2
+* Wed Feb 23 2011 Tejas Dinkar <tejas@gja.in> - 0.0.1-1
 - Initial Checkin
