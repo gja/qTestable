@@ -1,7 +1,5 @@
-#! /bin/sh
-
-SERVER=org.qTestable.FT1
-./01_a_simple_button --enable-qTestable &
+SERVER=org.qTestable.FT
+./`basename $PWD` --enable-qTestable &
 CHILDPID=$!
 
 function wait_for_start()
@@ -25,7 +23,3 @@ function send_signal()
 }
 
 wait_for_start
-
-send_signal blah/click/button
-send_signal blah/getText/label clicked
-send_signal blah/quit/app

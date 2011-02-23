@@ -12,7 +12,7 @@ int main(int argc, char ** argv)
 {
   QApplication app(argc, argv);
 
-  QTestableService::startService("org.qTestable.FT2", app.arguments());
+  QTestableService::startService("org.qTestable.FT", app.arguments());
 
   QPushButton button("foobar");
   button.show();
