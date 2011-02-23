@@ -5,3 +5,12 @@ QT4_WRAP_CPP(qTestable_HEADERS_MOC ${qTestable_HEADERS})
 
 add_library(qTestable SHARED ${qTestable_SOURCES} ${qTestable_HEADERS_MOC})
 target_link_libraries(qTestable ${LIBRARIES})
+
+SET_TARGET_PROPERTIES(qTestable
+                      PROPERTIES
+                      VERSION ${VERSION}
+                      SOVERSION 1)
+
+INSTALL(TARGETS qTestable
+        DESTINATION lib
+        PERMISSIONS OWNER_READ GROUP_READ WORLD_READ)

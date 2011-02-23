@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 2.8)
-project(helloworld)
+project(qTestable)
+set(VERSION 0.0.1)
 
 option(USE_TEST "Generate Test Libraries" OFF)
 
@@ -19,7 +20,8 @@ include_directories(include)
 
 set(LIBRARIES ${QT_LIBRARIES})
 
-add_subdirectory(lib bin)
+add_subdirectory(lib)
+add_subdirectory(include)
 
 if(USE_TEST)
   add_subdirectory(test)
