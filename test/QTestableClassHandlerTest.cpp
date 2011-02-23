@@ -2,6 +2,8 @@
 #include "QTestableClassHandler.h"
 #include "Dispatcher.h"
 
+using namespace QTestable;
+
 class DummyHandler : public QTestableClassHandler
 {
   Q_OBJECT

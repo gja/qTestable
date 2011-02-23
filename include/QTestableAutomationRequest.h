@@ -3,16 +3,19 @@
 
 #include <QString>
 
-class QTestableAutomationRequest
+namespace QTestable
 {
-  public:
-    QTestableAutomationRequest(const QString &requestURL);
-    bool isValid;
-    QString targetClass;
-    QString targetObject;
-    QString command;
-    QString arguments;
-    QString originalRequest;
-};
+  class QTestableAutomationRequest
+  {
+    public:
+      QTestableAutomationRequest(const QString &requestURL);
+      bool isValid;
+      QString targetClass;
+      QString targetObject;
+      QString command;
+      QString arguments;
+      QString originalRequest;
+  };
+}
 
 #endif

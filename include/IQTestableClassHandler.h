@@ -6,10 +6,13 @@
 
 #include "QTestableAutomationRequest.h"
 
-class IQTestableClassHandler : public QObject
+namespace QTestable 
 {
-  public:
-    virtual QString handleRequest(QObject *object, const QTestableAutomationRequest &request) = 0;
-};
+  class IQTestableClassHandler : public QObject
+  {
+    public:
+      virtual QString handleRequest(QObject *object, const QTestableAutomationRequest &request) = 0;
+  };
+}
 
 #endif

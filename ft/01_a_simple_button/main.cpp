@@ -5,6 +5,8 @@
 #include <QTestable.h>
 #include "LabelToButtonConnector.h"
 
+using namespace QTestable;
+
 class Handler : public IQTestableClassHandler
 {
   virtual QString handleRequest(QObject *object, const QTestableAutomationRequest &request)

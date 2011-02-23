@@ -1,6 +1,8 @@
 #include <QTest>
 #include "QTestableAutomationRequest.h"
 
+using namespace QTestable;
+
 class QTestableAutomationRequestTest : public QObject
 {
   Q_OBJECT

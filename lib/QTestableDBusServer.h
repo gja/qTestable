@@ -3,22 +3,25 @@
 
 #include "common.h"
 
-struct Dispatcher;
-
-class QTestableDBusServer : public QObject
+namespace QTestable 
 {
-  Q_OBJECT
+  struct Dispatcher;
 
-  Dispatcher *dispatcher;
+  class QTestableDBusServer : public QObject
+  {
+    Q_OBJECT
 
-  public:
-    QTestableDBusServer(Dispatcher *dispatcher);
+    Dispatcher *dispatcher;
 
-  public slots:
-    QString Automate(const QString &request);
-    QStringList RegisteredClasses();
-    QStringList RegisteredObjects();
-    bool IsEnabled();
-};
+    public:
+      QTestableDBusServer(Dispatcher *dispatcher);
+
+    public slots:
+      QString Automate(const QString &request);
+      QStringList RegisteredClasses();
+      QStringList RegisteredObjects();
+      bool IsEnabled();
+  };
+}
 
 #endif

@@ -11,15 +11,22 @@ cat > "$1.h" << EOF
 
 #include "common.h"
 
-class $1
+namespace QTestable
 {
-};
+  class $1
+  {
+  };
+}
 
 #endif
 EOF
 
 cat > "$1.cpp" << EOF
 #include "$1.h"
+
+namespace QTestable
+{
+}
 EOF
 
 sed "s/\${BLANK}/$1.cpp \${BLANK}/" -i CMakeLists.txt

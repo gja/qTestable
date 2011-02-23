@@ -2,6 +2,8 @@
 #include "Dispatcher.h"
 #include "IQTestableClassHandler.h"
 
+using namespace QTestable;
+
 class ReturnNameHandler : public IQTestableClassHandler
 {
   QString name;

@@ -6,6 +6,8 @@
 #include "LabelToButtonConnector.h"
 #include "Handler.h"
 
+using namespace QTestable;
+
 int main(int argc, char ** argv)
 {
   QApplication app(argc, argv);

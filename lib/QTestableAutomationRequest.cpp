@@ -2,25 +2,28 @@
 
 #include <QRegExp>
 
-QTestableAutomationRequest::QTestableAutomationRequest(const QString &request)
+namespace QTestable 
 {
-  QRegExp reg("([^/]*)/([^/]*)/(.*)");
-  QRegExp getCommand("([^/]*)/(.*)");
-
-  isValid = reg.indexIn(request) != -1;
-  originalRequest = request;
-
-  if(isValid)
+  QTestableAutomationRequest::QTestableAutomationRequest(const QString &request)
   {
-    targetClass = reg.cap(1);
-    command = reg.cap(2);
-    QString objectWithArgs = reg.cap(3);
+    QRegExp reg("([^/]*)/([^/]*)/(.*)");
+    QRegExp getCommand("([^/]*)/(.*)");
 
-    if(getCommand.indexIn(objectWithArgs) == -1)
-      targetObject = objectWithArgs;
-    else {
-      targetObject = getCommand.cap(1);
-      arguments = getCommand.cap(2);
+    isValid = reg.indexIn(request) != -1;
+    originalRequest = request;
+
+    if(isValid)
+    {
+      targetClass = reg.cap(1);
+      command = reg.cap(2);
+      QString objectWithArgs = reg.cap(3);
+
+      if(getCommand.indexIn(objectWithArgs) == -1)
+        targetObject = objectWithArgs;
+      else {
+        targetObject = getCommand.cap(1);
+        arguments = getCommand.cap(2);
+      }
     }
   }
 }

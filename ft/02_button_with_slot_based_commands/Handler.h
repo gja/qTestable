@@ -4,6 +4,8 @@
 #include <QApplication>
 #include <QLabel>
 
+using namespace QTestable;
+
 class Handler : public QTestableClassHandler
 {
   Q_OBJECT

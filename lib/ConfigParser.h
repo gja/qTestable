@@ -3,12 +3,15 @@
 
 #include "common.h"
 
-class ConfigParser
+namespace QTestable 
 {
-  public:
-    ConfigParser(const QStringList &arguments);
+  class ConfigParser
+  {
+    public:
+      ConfigParser(const QStringList &arguments);
 
-    bool isEnabled;
-};
+      bool isEnabled;
+  };
+}
 
 #endif

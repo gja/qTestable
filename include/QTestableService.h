@@ -2,23 +2,27 @@
 #define QTESTABLESERVICE_H
 
 #include <QStringList>
-struct IQTestableClassHandler;
 
-class QTestableService
+namespace QTestable 
 {
-  static struct QTestableServicePrivate *d;
+  struct IQTestableClassHandler;
 
-  public:
+  class QTestableService
+  {
+    static struct QTestableServicePrivate *d;
 
-    // Recommended API. This will start the service if --enable-qTestable is found.
-    static void startService(const QString &serviceName, const QStringList &arguments);
-    static void startService(const QString &serviceName, bool isEnabled = true);
+    public:
 
-    static void registerClass(const QString &className, IQTestableClassHandler *handler);
-    static void unRegisterClass(const QString &className);
-    static void registerInvalidRequestHandler(IQTestableClassHandler *handler);
-    static void registerObject(const QString &objectName, QObject *handler);
-    static void unRegisterObject(const QString &objectName);
-};
+      // Recommended API. This will start the service if --enable-qTestable is found.
+      static void startService(const QString &serviceName, const QStringList &arguments);
+      static void startService(const QString &serviceName, bool isEnabled = true);
+
+      static void registerClass(const QString &className, IQTestableClassHandler *handler);
+      static void unRegisterClass(const QString &className);
+      static void registerInvalidRequestHandler(IQTestableClassHandler *handler);
+      static void registerObject(const QString &objectName, QObject *handler);
+      static void unRegisterObject(const QString &objectName);
+  };
+}
 
 #endif

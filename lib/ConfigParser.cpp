@@ -2,11 +2,14 @@
 
 #include <QRegExp>
 
-ConfigParser::ConfigParser(const QStringList &arguments) : isEnabled(false)
+namespace QTestable 
 {
-  foreach(QString string, arguments)
+  ConfigParser::ConfigParser(const QStringList &arguments) : isEnabled(false)
   {
-    if (string == "--enable-qTestable") isEnabled = true;
-    if (string == "--disable-qTestable") isEnabled = false;
+    foreach(QString string, arguments)
+    {
+      if (string == "--enable-qTestable") isEnabled = true;
+      if (string == "--disable-qTestable") isEnabled = false;
+    }
   }
 }

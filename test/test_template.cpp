@@ -1,6 +1,8 @@
 #include <QTest>
 #include "blah.h"
 
+using namespace QTestable;
+
 class blahTest : public QObject
 {
   Q_OBJECT

@@ -1,6 +1,8 @@
 #include <QTest>
 #include "ConfigParser.h"
 
+using namespace QTestable;
+
 class ConfigParserTest : public QObject
 {
   Q_OBJECT
