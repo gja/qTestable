@@ -1,6 +1,6 @@
 Name:           qTestable
-Version:        0.0.2
-Release:        2%{?dist}
+Version:        0.0.3
+Release:        3%{?dist}
 Summary:        Library to write functional tests for Qt applications
 
 Group:          Applications/Publishing
@@ -13,6 +13,7 @@ Requires:  qt
 
 BuildRequires:  cmake
 BuildRequires:  qt-devel
+BuildRequires:  xorg-x11-server-Xvfb
 
 
 %description
@@ -34,13 +35,16 @@ Development files and documentation for the %{name} library.
 
 
 %build
-%cmake \
+%cmake -DUSE_TEST=ON \
 %ifarch x86_64 ppc64 s390x sparc64
 -DWANT_LIB64=1 \
 %endif
 .
 make %{?_smp_mflags}
 
+
+%check
+xvfb-run ctest
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -68,5 +72,7 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sun Feb 27 2011 Tejas Dinkar <tejas@gja.in> - 0.0.3-3
+- Added Unit Tests To The RPM
 * Wed Feb 23 2011 Tejas Dinkar <tejas@gja.in> - 0.0.1-1
 - Initial Checkin
