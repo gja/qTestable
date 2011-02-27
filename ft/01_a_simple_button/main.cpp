@@ -11,17 +11,17 @@ class Handler : public IQTestableClassHandler
 {
   virtual QString handleRequest(QObject *object, const QTestableAutomationRequest &request)
   {
-    if(request.command == "click") {
+    if(request.command() == "click") {
       ((QPushButton *) object)->click();
       return "clicked";
     }
 
-    if(request.command == "quit") {
+    if(request.command() == "quit") {
       ((QApplication *) object)->quit();
       return "quit";
     }
 
-    if(request.command == "getText") {
+    if(request.command() == "getText") {
       return ((QLabel *) object)->text();
     }
 

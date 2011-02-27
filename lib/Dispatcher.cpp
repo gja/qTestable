@@ -45,14 +45,14 @@ namespace QTestable
   QString Dispatcher::handleRequest(const QString &request)
   {
     QTestableAutomationRequest req(request);
-    if(! req.isValid)
+    if(! req.isValid())
       return invalidRequestHandler->handleRequest(NULL, req);
 
-    IQTestableClassHandler *handler = classMap[req.targetClass];
+    IQTestableClassHandler *handler = classMap[req.targetClass()];
     if (handler == NULL)
       handler = invalidRequestHandler;
 
-    return handler->handleRequest(objectMap[req.targetObject], req);
+    return handler->handleRequest(objectMap[req.targetObject()], req);
   }
 
   QStringList Dispatcher::registeredObjects()

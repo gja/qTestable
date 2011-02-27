@@ -5,16 +5,22 @@
 
 namespace QTestable
 {
+  struct QTestableAutomationRequestPrivate;
+
   class QTestableAutomationRequest
   {
+    QTestableAutomationRequestPrivate *d;
+
     public:
       QTestableAutomationRequest(const QString &requestURL);
-      bool isValid;
-      QString targetClass;
-      QString targetObject;
-      QString command;
-      QString arguments;
-      QString originalRequest;
+      ~QTestableAutomationRequest();
+
+      bool isValid() const;
+      QString targetClass() const;
+      QString targetObject() const;
+      QString command() const;
+      QString arguments() const;
+      QString originalRequest() const;
   };
 }
 

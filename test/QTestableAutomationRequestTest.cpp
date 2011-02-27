@@ -31,11 +31,11 @@ class QTestableAutomationRequestTest : public QObject
 
       QTestableAutomationRequest parser(request);
 
-      QCOMPARE(isValid, parser.isValid);
-      QCOMPARE(targetClass, parser.targetClass);
-      QCOMPARE(targetObject, parser.targetObject);
-      QCOMPARE(command, parser.command);
-      QCOMPARE(request, parser.originalRequest);
+      QCOMPARE(isValid, parser.isValid());
+      QCOMPARE(targetClass, parser.targetClass());
+      QCOMPARE(targetObject, parser.targetObject());
+      QCOMPARE(command, parser.command());
+      QCOMPARE(request, parser.originalRequest());
     }
 
     void ShouldBeAbleToParseARequestWithArguments()
