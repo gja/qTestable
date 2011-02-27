@@ -21,6 +21,8 @@ namespace QTestable
       QString command() const;
       QString arguments() const;
       QString originalRequest() const;
+
+      QString argument(const QString &key) const;
   };
 }
 

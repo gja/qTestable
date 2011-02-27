@@ -41,7 +41,9 @@ class QTestableAutomationRequestTest : public QObject
     void ShouldBeAbleToParseARequestWithArguments()
     {
       QTestableAutomationRequest request("foo/bar/baz?q1=a1&q2=a2");
-//      QCOMPARE("a1", request.argument("q1"));
+      QCOMPARE(request.argument("q1"), QString("a1"));
+      QCOMPARE(request.argument("q2"), QString("a2"));
+      QCOMPARE(request.argument("invalid"), QString(""));
     }
 };
 
