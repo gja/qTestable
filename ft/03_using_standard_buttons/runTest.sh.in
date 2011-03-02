@@ -6,3 +6,5 @@ send_signal button/click/button
 send_signal button/text/button foobar
 send_signal label/text/label clicked
 send_signal application/quit/app
+
+sleep 0.5
