@@ -11,9 +11,12 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 Requires:  qt
 
+BuildRequires:  qt
 BuildRequires:  cmake
 BuildRequires:  qt-devel
 BuildRequires:  xorg-x11-server-Xvfb
+BuildRequires:  dbus
+BuildRequires:  dbus-x11
 
 
 %description
