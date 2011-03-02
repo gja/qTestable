@@ -1,6 +1,6 @@
 Name:           qTestable
-Version:        0.0.3
-Release:        3%{?dist}
+Version:        0.0.4
+Release:        4%{?dist}
 Summary:        Library to write functional tests for Qt applications
 
 Group:          Applications/Publishing
@@ -38,7 +38,7 @@ Development files and documentation for the %{name} library.
 
 
 %build
-%cmake -DUSE_TEST=ON \
+%cmake -DUSE_TEST=ON -DVERSION=%{version} \
 %ifarch x86_64 ppc64 s390x sparc64
 -DWANT_LIB64=1 \
 %endif
@@ -75,6 +75,8 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sun Feb 27 2011 Tejas Dinkar <tejas@gja.in> - 0.0.4-4
+- Letting the Version Be Driven by the RPM
 * Sun Feb 27 2011 Tejas Dinkar <tejas@gja.in> - 0.0.3-3
 - Added Unit Tests To The RPM
 * Wed Feb 23 2011 Tejas Dinkar <tejas@gja.in> - 0.0.1-1
