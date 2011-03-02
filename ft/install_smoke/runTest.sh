@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /bin/bash
 
 SERVER=org.qTestable.FT
 ./install_smoke --enable-qTestable &
