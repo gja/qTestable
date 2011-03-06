@@ -35,6 +35,14 @@ class ReturnObjectNameHandler : public IQTestableClassHandler
     }
 };
 
+class ErrorMessageHandler : public IQTestableClassHandler
+{
+    virtual QString handleRequest(QObject *object, const QTestableAutomationRequest &request)
+    {
+      return request.errorMessage();
+    }
+};
+
 
 class DispatcherTest : public QObject
 {
@@ -99,6 +107,14 @@ class DispatcherTest : public QObject
 
       QCOMPARE(dispatcher.registeredObjects().size(), 1);
       QCOMPARE(dispatcher.registeredClasses().size(), 1);
+    }
+
+    void shouldBeAbleToGetErrorMessageWithRequest()
+    {
+      Dispatcher dispatcher;
+      dispatcher.registerClass("class1", new ErrorMessageHandler());
+
+      QCOMPARE(dispatcher.handleRequest("class1/click/button1"), QString("Unable to find top level object \"button1\""));
     }
 };
 

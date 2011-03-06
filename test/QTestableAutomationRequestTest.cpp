@@ -36,6 +36,8 @@ class QTestableAutomationRequestTest : public QObject
       QCOMPARE(targetObject, parser.targetObject());
       QCOMPARE(command, parser.command());
       QCOMPARE(request, parser.originalRequest());
+
+      QCOMPARE(isValid ? QString("") : QString("Invalid Request"), parser.errorMessage());
     }
 
     void ShouldBeAbleToParseARequestWithArguments()

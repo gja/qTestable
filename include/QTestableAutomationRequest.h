@@ -22,6 +22,9 @@ namespace QTestable
       QString arguments() const;
       QString originalRequest() const;
 
+      void setErrorMessage(const QString &errorMessage);
+      QString errorMessage() const;
+
       QString argument(const QString &key) const;
   };
 }

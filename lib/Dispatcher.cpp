@@ -52,7 +52,10 @@ namespace QTestable
     if (handler == NULL)
       handler = invalidRequestHandler;
 
-    return handler->handleRequest(objectMap.find(req.targetObject()).targetObject, req);
+    FindResults results = objectMap.find(req.targetObject());
+    req.setErrorMessage(results.errorMessage);
+
+    return handler->handleRequest(results.targetObject, req);
   }
 
   QStringList Dispatcher::registeredObjects()

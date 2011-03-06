@@ -27,12 +27,17 @@ namespace QTestable
       QString command;
       QString arguments;
       QString originalRequest;
+      QString errorMessage;
       QHash<QString, QString> argumentMap;
 
       QTestableAutomationRequestPrivate(const QString &request)
       {
         QRegExp reg("([^/]*)/([^/]*)/([^\\?]*)\\?\?([^\\?].*)?");
         isValid = reg.indexIn(request) != -1;
+
+        if(!isValid)
+          errorMessage = "Invalid Request";
+
         originalRequest = request;
 
         targetClass = reg.cap(1);
@@ -86,6 +91,16 @@ namespace QTestable
   QString QTestableAutomationRequest::originalRequest() const
   {
     return d->originalRequest;
+  }
+
+  QString QTestableAutomationRequest::errorMessage() const
+  {
+    return d->errorMessage;
+  }
+
+  void QTestableAutomationRequest::setErrorMessage(const QString &errorMessage)
+  {
+    d->errorMessage = errorMessage;
   }
 
   QString QTestableAutomationRequest::argument(const QString &key) const

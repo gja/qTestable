@@ -4,8 +4,8 @@ namespace QTestable
 {
   QString QTestableClassHandler::handleRequest(QObject *object, const QTestableAutomationRequest &request)
   {
-    if (!request.isValid())
-      return handleInvalidRequest(object, request);
+    if (!request.isValid() || object == NULL)
+      return request.errorMessage();
 
     QString ret;
     QByteArray ba = request.command().toLatin1(); // do not inline this, as it can cause memory leak

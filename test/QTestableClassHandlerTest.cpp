@@ -29,6 +29,7 @@ class QTestableClassHandlerTest : public QObject
     {
       Dispatcher dispatcher;
       dispatcher.registerClass("dummy", new DummyHandler());
+      dispatcher.registerObject("obj", new QObject());
       QCOMPARE(dispatcher.handleRequest("dummy/foo/obj"), QString("foo"));
     }
 
@@ -36,13 +37,14 @@ class QTestableClassHandlerTest : public QObject
     {
       Dispatcher dispatcher;
       dispatcher.setInvalidRequestHandler(new DummyHandler());
-      QCOMPARE(dispatcher.handleRequest("dummy"), QString("invalid"));
+      QCOMPARE(dispatcher.handleRequest("dummy"), QString("Invalid Request"));
     }
 
     void shouldBeAbleToProvideACallbackForANonExistantCommand()
     {
       Dispatcher dispatcher;
       dispatcher.setInvalidRequestHandler(new DummyHandler());
+      dispatcher.registerObject("obj", new QObject());
       QCOMPARE(dispatcher.handleRequest("dummy/uaohtneunah/obj"), QString("invalid"));
     }
     
@@ -50,6 +52,7 @@ class QTestableClassHandlerTest : public QObject
     {
       Dispatcher dispatcher;
       dispatcher.registerClass("dummy", new QNamedClassHandler("name"));
+      dispatcher.registerObject("obj", new QObject());
       QCOMPARE(dispatcher.handleRequest("dummy/foo/obj"), QString("Error: Unable To Execute Command 'foo' in Handler 'name'. request = { targetObject = 'obj', targetClass = 'dummy', arguments = '' }"));
     }
 };
