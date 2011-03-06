@@ -1,3 +1,3 @@
 task :default do
-  exec "bash CI.sh"
+  system "bash CI.sh"
 end
