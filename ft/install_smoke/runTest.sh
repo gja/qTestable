@@ -7,7 +7,6 @@ CHILDPID=$!
 function wait_for_start()
 {
   while [ "`qdbus $SERVER / org.qTestable.IsEnabled`" != "true" ]; do
-    echo "sleep"
     sleep 0.1
   done
 }
@@ -26,6 +25,6 @@ function send_signal()
 
 wait_for_start
 
-send_signal button/click/button
-send_signal label/text/label clicked
+send_signal button/click/form/pushButton
+send_signal label/text/form/label clicked
 send_signal application/quit/app
