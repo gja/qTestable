@@ -1,0 +1,9 @@
+#! /bin/bash
+
+source @CMAKE_CURRENT_SOURCE_DIR@/../common-test.sh
+
+send_signal button/click/form/pushButton
+send_signal label/text/form/label clicked
+send_signal application/quit/app
+
+sleep 0.1
