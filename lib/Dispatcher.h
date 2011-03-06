@@ -3,13 +3,14 @@
 
 #include "common.h"
 #include "IQTestableClassHandler.h"
+#include "ObjectFinder.h"
 
 namespace QTestable 
 {
   class Dispatcher
   {
     QHash<QString, IQTestableClassHandler *> classMap;
-    QHash<QString, QObject *> objectMap;
+    ObjectFinder objectMap;
     IQTestableClassHandler *invalidRequestHandler;
 
     public:

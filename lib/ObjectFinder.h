@@ -30,6 +30,11 @@ namespace QTestable
       {
         objectMap.remove(name);
       }
+
+      QList<QString> keys()
+      {
+        return objectMap.keys();
+      }
   };
 }
 
