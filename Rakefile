@@ -1,3 +1,3 @@
 task :default do
-  system "bash CI.sh"
+  fail unless system "bash CI.sh"
 end
