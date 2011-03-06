@@ -7,8 +7,6 @@ endif(NOT VERSION)
 
 option(USE_TEST "Generate Test Libraries" OFF)
 
-set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
-
 find_package(Qt4 REQUIRED)
 set(QT_USE_QTDBUS TRUE)
 
