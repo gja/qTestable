@@ -9,6 +9,7 @@ option(USE_TEST "Generate Test Libraries" OFF)
 
 find_package(Qt4 REQUIRED)
 set(QT_USE_QTDBUS TRUE)
+find_package(QJSON REQUIRED)
 
 if(USE_TEST)
   set(QT_USE_QTTEST TRUE)
@@ -17,9 +18,9 @@ endif(USE_TEST)
 
 include(${QT_USE_FILE})
 add_definitions(${QT_DEFINITIONS})
-include_directories(include)
+include_directories(include ${QJSON_INCLUDE_DIR})
 
-set(LIBRARIES ${QT_LIBRARIES})
+set(LIBRARIES ${QT_LIBRARIES} ${QJSON_LIBRARIES})
 
 add_subdirectory(lib)
 add_subdirectory(include)
