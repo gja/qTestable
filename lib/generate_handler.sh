@@ -13,6 +13,7 @@ cat > "handlers/$CLASSNAME.h" << EOF
 
 #include "../common.h"
 #include "QTestableClassHandler.h"
+#include "qjson/serializer.h"
 
 namespace QTestable
 {

@@ -1,6 +1,7 @@
 #include <QTest>
 #include "QTestableClassHandler.h"
 #include "Dispatcher.h"
+#include "qjson/parser.h"
 
 using namespace QTestable;
 
@@ -53,7 +54,11 @@ class QTestableClassHandlerTest : public QObject
       Dispatcher dispatcher;
       dispatcher.registerClass("dummy", new QNamedClassHandler("name"));
       dispatcher.registerObject("obj", new QObject());
-      QCOMPARE(dispatcher.handleRequest("dummy/foo/obj"), QString("Error: Unable To Execute Command 'foo' in Handler 'name'. request = { targetObject = 'obj', targetClass = 'dummy', arguments = '' }"));
+      QVariantMap variant = QJson::Parser().parse(dispatcher.handleRequest("dummy/foo/obj").toUtf8()).toMap();
+      QCOMPARE(variant["error"].toString(), QString("Error: Unable To Execute Command 'foo' in Handler 'name'"));
+      QCOMPARE(variant["targetObject"].toString(), QString("obj"));
+      QCOMPARE(variant["targetClass"].toString(), QString("dummy"));
+      QCOMPARE(variant["arguments"].toString(), QString(""));
     }
 };
 

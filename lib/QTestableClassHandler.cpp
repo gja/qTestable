@@ -1,4 +1,7 @@
 #include "QTestableClassHandler.h"
+#include "qjson/serializer.h"
+
+#include <QVariant>
 
 namespace QTestable 
 {
@@ -20,7 +23,11 @@ namespace QTestable
 
   QString QNamedClassHandler::handleInvalidRequest(QObject *object, const QTestableAutomationRequest &request)
   {
-    return QString("Error: Unable To Execute Command '%1' in Handler '%2'. request = { targetObject = '%3', targetClass = '%4', arguments = '%5' }").
-                               arg(request.command()).arg(name).arg(request.targetObject()).arg(request.targetClass()).arg(request.arguments());
+    QVariantMap variant;
+    variant["error"] = QString("Error: Unable To Execute Command '%1' in Handler '%2'").arg(request.command()).arg(name);
+    variant["targetObject"] = request.targetObject();
+    variant["targetClass"] = request.targetClass();
+    variant["arguments"] = request.arguments();
+    return QJson::Serializer().serialize(variant);
   }
 }
