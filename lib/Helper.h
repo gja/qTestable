@@ -5,9 +5,11 @@
 #include <QVariant>
 #include "qjson/serializer.h"
 
+struct QAction;
+
 namespace QTestable
 {
-  QVariant extractMenus(const QObject *object);
+  QVariant extractMenus(const QAction *object);
   QVariant extractChildrenTree(const QObject *object);
   QString serialize(const QVariant &variant);
 }

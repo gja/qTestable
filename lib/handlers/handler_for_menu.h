@@ -4,6 +4,8 @@
 #include "../common.h"
 #include "QTestableClassHandler.h"
 
+#include <QMenu>
+
 namespace QTestable
 {
   class handler_for_menu : public QNamedClassHandler
@@ -16,7 +18,7 @@ namespace QTestable
     private slots:
       QString getMenus(QObject *object, const QTestableAutomationRequest &request)
       {
-        return serialize(extractMenus(object));
+        return serialize(extractMenus(((QMenu *) object)->menuAction()));
       }
   };  
 }

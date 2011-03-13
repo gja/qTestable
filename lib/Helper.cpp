@@ -18,44 +18,35 @@ namespace QTestable
     map["children"] = childrenMap;
   }
 
-  void extractMenusFromAction(const QAction *action, QVariantMap &map)
+  void populatePropertiesOfAction(const QAction *action, QVariantMap &map)
   {
-    if(action == NULL)
-      return;
-
-    map["text"] = action->text();
+    map["name"] = action->objectName();
     map["type"] = "action";
+    map["text"] = action->text();
   }
 
-  void extractMenusFromMenu(const QMenu *menu, QVariantMap &map)
+  void populatePropertiesOfMenu(const QMenu *menu, QVariantMap &map)
   {
-    if(menu == NULL)
-      return;
-
-    map["title"] = menu->title();
+    map["name"] = menu->objectName();
     map["type"] = "menu";
+    map["title"] = menu->title();
 
-    extractChildren(menu, map, extractMenus);
+    QList<QVariant> list;
+    foreach(const QAction *action, menu->actions())
+      list<<extractMenus(action);
+    map["children"] = list;
   }
 
-  void extractMenusFromMenuBar(const QMenuBar *menu, QVariantMap &map)
-  {
-    if(menu == NULL)
-      return;
-
-    map["type"] = "menuBar";
-
-    extractChildren(menu, map, extractMenus);
-  }
-
-  QVariant extractMenus(const QObject *object)
+  QVariant extractMenus(const QAction *object)
   {
     QVariantMap map;
-    map["name"] = object->objectName();
 
-    extractMenusFromAction(dynamic_cast<const QAction *>(object), map);
-    extractMenusFromMenu(dynamic_cast<const QMenu *>(object), map);
-    extractMenusFromMenuBar(dynamic_cast<const QMenuBar *>(object), map);
+    const QMenu *menu = object->menu();
+    if(menu)
+      populatePropertiesOfMenu(menu, map);
+    else
+      populatePropertiesOfAction(object, map);
+
     return map;
   }
 
