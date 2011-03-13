@@ -30,4 +30,14 @@ namespace QTestable
     variant["arguments"] = request.arguments();
     return serialize(variant);
   }
+
+  QString QNamedClassHandler::getChildrenTree(QObject *object, const QTestableAutomationRequest &request)
+  {
+    return serialize(extractChildrenTree(object));
+  }
+
+  QString QNamedClassHandler::objectName(QObject *object, const QTestableAutomationRequest &request)
+  {
+    return object->objectName();
+  }
 }

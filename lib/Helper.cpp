@@ -58,4 +58,13 @@ namespace QTestable
     extractMenusFromMenuBar(dynamic_cast<const QMenuBar *>(object), map);
     return map;
   }
+
+  QVariant extractChildrenTree(const QObject *object)
+  {
+    QVariantMap map;
+    map["name"] = object->objectName();
+    if(object->children().count())
+      extractChildren(object, map, extractChildrenTree);
+    return map;
+  }
 }

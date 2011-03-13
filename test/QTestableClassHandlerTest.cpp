@@ -60,6 +60,33 @@ class QTestableClassHandlerTest : public QObject
       QCOMPARE(variant["targetClass"].toString(), QString("dummy"));
       QCOMPARE(variant["arguments"].toString(), QString(""));
     }
+    
+    void shouldBeAbleToGetNameForAnObject()
+    {
+      Dispatcher dispatcher;
+      dispatcher.registerClass("dummy", new QNamedClassHandler("name"));
+      QObject object;
+      object.setObjectName("foo");
+      dispatcher.registerObject("obj", &object);
+
+      QCOMPARE(dispatcher.handleRequest("dummy/objectName/obj"), QString("foo"));
+    }
+
+    void shouldBeAbleToGetAnObjectGraphFromAnObject()
+    {
+      Dispatcher dispatcher;
+      dispatcher.registerClass("dummy", new QNamedClassHandler("name"));
+
+      QObject parent;
+      parent.setObjectName("parent");
+
+      QObject child(&parent);
+      child.setObjectName("child");
+
+      dispatcher.registerObject("obj", &parent);
+
+      QCOMPARE(dispatcher.handleRequest("dummy/getChildrenTree/obj"), QString("{ \"children\" : [ { \"name\" : \"child\" } ], \"name\" : \"parent\" }"));
+    }
 };
 
 QTEST_MAIN(QTestableClassHandlerTest)

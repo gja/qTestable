@@ -17,6 +17,8 @@ namespace QTestable
   
   class QNamedClassHandler : public QTestableClassHandler
   {
+    Q_OBJECT
+
     QString name;
 
     public:
@@ -24,6 +26,9 @@ namespace QTestable
       virtual QString handleInvalidRequest(QObject *object, const QTestableAutomationRequest &request);
 
     private slots:
+      QString getChildrenTree(QObject *object, const QTestableAutomationRequest &request);
+      QString objectName(QObject *object, const QTestableAutomationRequest &request);
+
       // Declare all your commands here, ex:
       // QString foo(Object *foo, const QTestableAutomationRequest &request)
   };
