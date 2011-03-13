@@ -1,6 +1,6 @@
 #include "QTestableClassHandler.h"
-#include "qjson/serializer.h"
 
+#include "common.h"
 #include <QVariant>
 
 namespace QTestable 
@@ -28,6 +28,6 @@ namespace QTestable
     variant["targetObject"] = request.targetObject();
     variant["targetClass"] = request.targetClass();
     variant["arguments"] = request.arguments();
-    return QJson::Serializer().serialize(variant);
+    return serialize(variant);
   }
 }

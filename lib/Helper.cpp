@@ -5,6 +5,19 @@
 
 namespace QTestable
 {
+  QString serialize(const QVariant &variant)
+  {
+    return QJson::Serializer().serialize(variant);
+  }
+
+  void extractChildren(const QObject *menu, QVariantMap &map)
+  {
+    QList<QVariant> childrenMap;
+    foreach(QObject *child, menu->children())
+      childrenMap<<extractMenus(child);
+    map["children"] = childrenMap;
+  }
+
   void extractMenusFromAction(const QAction *action, QVariantMap &map)
   {
     if(action == NULL)
@@ -12,14 +25,6 @@ namespace QTestable
 
     map["text"] = action->text();
     map["type"] = "action";
-  }
-
-  void extractChildren(const QObject *menu, QVariantMap &map)
-  {
-    QList<QVariant> childrenMap;
-    foreach(QObject *child, menu->children())
-      childrenMap<<Helper::extractMenus(child);
-    map["children"] = childrenMap;
   }
 
   void extractMenusFromMenu(const QMenu *menu, QVariantMap &map)
@@ -43,7 +48,7 @@ namespace QTestable
     extractChildren(menu, map);
   }
 
-  QVariantMap Helper::extractMenus(const QObject *object)
+  QVariantMap extractMenus(const QObject *object)
   {
     QVariantMap map;
     map["name"] = object->objectName();

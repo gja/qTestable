@@ -15,7 +15,7 @@ class MenuHelperTest : public QObject
       QAction action("foo", NULL);
       action.setObjectName("fooAction");
 
-      QVariantMap map = Helper::extractMenus(&action);
+      QVariantMap map = extractMenus(&action);
       QCOMPARE (map["name"].toString(), QString("fooAction"));
       QCOMPARE (map["text"].toString(), QString("foo"));
       QCOMPARE (map["type"].toString(), QString("action"));
@@ -26,7 +26,7 @@ class MenuHelperTest : public QObject
       QMenu menu("foo", NULL);
       menu.setObjectName("fooMenu");
 
-      QVariantMap map = Helper::extractMenus(&menu);
+      QVariantMap map = extractMenus(&menu);
       QCOMPARE (map["name"].toString(), QString("fooMenu"));
       QCOMPARE (map["title"].toString(), QString("foo"));
       QCOMPARE (map["type"].toString(), QString("menu"));
@@ -38,7 +38,7 @@ class MenuHelperTest : public QObject
       QAction action1("action1", &menu);
       QAction action2("action2", &menu);
 
-      QVariantMap map = Helper::extractMenus(&menu);
+      QVariantMap map = extractMenus(&menu);
       QList<QVariant> children = map["children"].toList();
 
       // For some reason, it contains an action with itself
@@ -56,7 +56,7 @@ class MenuHelperTest : public QObject
       QMenu menu1("menu1", &menu);
       QMenu menu2("menu2", &menu);
 
-      QVariantMap map = Helper::extractMenus(&menu);
+      QVariantMap map = extractMenus(&menu);
       QList<QVariant> children = map["children"].toList();
 
       QCOMPARE (map["type"].toString(), QString("menuBar"));

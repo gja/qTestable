@@ -3,14 +3,12 @@
 
 #include "common.h"
 #include <QVariant>
+#include "qjson/serializer.h"
 
 namespace QTestable
 {
-  class Helper
-  {
-    public:
-      static QVariantMap extractMenus(const QObject *object);
-  };
+  QVariantMap extractMenus(const QObject *object);
+  QString serialize(const QVariant &variant);
 }
 
 #endif

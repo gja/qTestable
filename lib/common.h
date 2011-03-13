@@ -5,4 +5,6 @@
 #include <QStringList>
 #include <QHash>
 
+#include "Helper.h"
+
 #endif
