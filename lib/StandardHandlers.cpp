@@ -3,7 +3,6 @@
 #include "handlers/handler_for_button.h"
 #include "handlers/handler_for_application.h"
 #include "handlers/handler_for_label.h"
-#include "handlers/handler_for_menu.h"
 //NEXTINCLUDEHERE
 
 using namespace QTestable;
@@ -21,9 +20,4 @@ IQTestableClassHandler *QTestable::StandardHandlers::applicationHandler()
 IQTestableClassHandler *QTestable::StandardHandlers::labelHandler()
 {
   return new handler_for_label("label");
-}
-
-IQTestableClassHandler *QTestable::StandardHandlers::menuHandler()
-{
-  return new handler_for_menu("menu");
 }

@@ -68,7 +68,6 @@ namespace QTestable
         dispatcher.registerClass("button", StandardHandlers::buttonHandler());
         dispatcher.registerClass("application", StandardHandlers::applicationHandler());
         dispatcher.registerClass("label", StandardHandlers::labelHandler());
-        dispatcher.registerClass("menu", StandardHandlers::menuHandler());
         //NEXTHANDLERHERE
       }
   };
