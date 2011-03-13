@@ -2,7 +2,7 @@ SET(BLANK)
 SET(HBLANK)
 SET(qTestable_SOURCES QTestableService.cpp ConfigParser.cpp QTestableAutomationRequest.cpp
       QTestableDBusAdaptor.cpp QTestableDBusServer.cpp Dispatcher.cpp QTestableClassHandler.cpp
-      StandardHandlers.cpp ObjectFinder.cpp ${BLANK})
+      StandardHandlers.cpp ObjectFinder.cpp Helper.cpp ${BLANK})
 SET(qTestable_HEADERS QTestableDBusAdaptor.h QTestableDBusServer.h handlers/handler_for_button.h 
       handlers/handler_for_application.h handlers/handler_for_label.h handlers/handler_for_menuBar.h ${HBLANK})
 QT4_WRAP_CPP(qTestable_HEADERS_MOC ${qTestable_HEADERS})

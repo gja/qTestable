@@ -4,7 +4,7 @@ system 'sh @CMAKE_CURRENT_SOURCE_DIR@/../common-test.sh'
 
 require '@CMAKE_CURRENT_SOURCE_DIR@/../common-test'
 
-send_signal 'menuBar/getTopLevelMenus/form/menubar', 'something'
+send_signal 'menuBar/getMenus/form/menubar', 'something'
 send_signal 'application/quit/app'
 
 sleep 0.1
