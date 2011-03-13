@@ -11,6 +11,7 @@ namespace QTestable
       static IQTestableClassHandler *buttonHandler();
       static IQTestableClassHandler *applicationHandler();
       static IQTestableClassHandler *labelHandler();
+      static IQTestableClassHandler *menuBarHandler();
       //NEXTHANDLERHERE
   };
 }
