@@ -1,6 +1,6 @@
 Name:           qTestable
-Version:        0.0.5
-Release:        6%{?dist}
+Version:        0.0.6
+Release:        7%{?dist}
 Summary:        Library to write functional tests for Qt applications
 
 Group:          Applications/Publishing
@@ -10,6 +10,7 @@ Source0:        http://tejas.fedorapeople.org/%{name}/%{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 Requires:  qt
+Requires:  qjson
 
 BuildRequires:  qt
 BuildRequires:  cmake
@@ -17,6 +18,7 @@ BuildRequires:  qt-devel
 BuildRequires:  xorg-x11-server-Xvfb
 BuildRequires:  dbus
 BuildRequires:  dbus-x11
+BuildRequires:  qjson-devel
 
 
 %description
@@ -28,6 +30,7 @@ Summary:        Development files for %{name} library
 Group:          Development/Libraries
 License:        ASL 2.0
 Requires:       %{name} = %{version}-%{release}
+Requires:       qt-devel
 
 %description devel
 Development files and documentation for the %{name} library.
@@ -75,6 +78,8 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sun Feb 27 2011 Tejas Dinkar <tejas@gja.in> - 0.0.5-6
+- Adding QJson to the RPM
 * Sun Feb 27 2011 Tejas Dinkar <tejas@gja.in> - 0.0.4-4
 - Letting the Version Be Driven by the RPM
 * Sun Feb 27 2011 Tejas Dinkar <tejas@gja.in> - 0.0.3-3
