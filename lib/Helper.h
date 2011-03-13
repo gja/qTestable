@@ -7,8 +7,9 @@
 
 namespace QTestable
 {
-  QVariantMap extractMenus(const QObject *object);
+  QVariant extractMenus(const QObject *object);
   QString serialize(const QVariant &variant);
+  void extractChildren(const QObject *parent, QVariantMap &map, QVariant (*mapping)(const QObject*));
 }
 
 #endif

@@ -10,11 +10,11 @@ namespace QTestable
     return QJson::Serializer().serialize(variant);
   }
 
-  void extractChildren(const QObject *menu, QVariantMap &map)
+  void extractChildren(const QObject *parent, QVariantMap &map, QVariant (*mapping)(const QObject*))
   {
     QList<QVariant> childrenMap;
-    foreach(QObject *child, menu->children())
-      childrenMap<<extractMenus(child);
+    foreach(QObject *child, parent->children())
+      childrenMap<<mapping(child);
     map["children"] = childrenMap;
   }
 
@@ -35,7 +35,7 @@ namespace QTestable
     map["title"] = menu->title();
     map["type"] = "menu";
 
-    extractChildren(menu, map);
+    extractChildren(menu, map, extractMenus);
   }
 
   void extractMenusFromMenuBar(const QMenuBar *menu, QVariantMap &map)
@@ -45,10 +45,10 @@ namespace QTestable
 
     map["type"] = "menuBar";
 
-    extractChildren(menu, map);
+    extractChildren(menu, map, extractMenus);
   }
 
-  QVariantMap extractMenus(const QObject *object)
+  QVariant extractMenus(const QObject *object)
   {
     QVariantMap map;
     map["name"] = object->objectName();
