@@ -1,8 +1,9 @@
 #include <QTest>
-#include "Helper.h"
 #include <QAction>
 #include <QMenu>
 #include <QMenuBar>
+
+#include "MenuHelper.h"
 
 using namespace QTestable;
 

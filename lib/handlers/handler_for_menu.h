@@ -2,6 +2,7 @@
 #define HANDLER_FOR_MENU_H
 
 #include "../common.h"
+#include "../MenuHelper.h"
 #include "QTestableClassHandler.h"
 
 #include <QMenu>
