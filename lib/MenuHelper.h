@@ -3,12 +3,13 @@
 
 #include "common.h"
 #include <QVariant>
-
-struct QAction;
+#include <QMenuBar>
+#include <QAction>
 
 namespace QTestable
 {
   QVariant extractMenus(const QAction *object);
+  QVariant extractMenus(const QMenuBar *bar);
 }
 
 #endif

@@ -49,23 +49,24 @@ class MenuHelperTest : public QObject
       QCOMPARE(children[1].toMap()["text"].toString(), QString("action2"));
     }
 
-//    void shouldBeAbleToGetChildrenForAQMenuBar()
-//    {
-//      QMenuBar menu(NULL);
-//      QMenu menu1("menu1", &menu);
-//      QMenu menu2("menu2", &menu);
-//
-//      QVariantMap map = extractMenus(menu).toMap();
-//      QList<QVariant> children = map["children"].toList();
-//
-//      QCOMPARE (map["type"].toString(), QString("menuBar"));
-//
-//      // Automatically added again
-//      QCOMPARE(children[0].toMap()["name"].toString(), QString("qt_menubar_ext_button"));
-//
-//      QCOMPARE(children[1].toMap()["title"].toString(), QString("menu1"));
-//      QCOMPARE(children[2].toMap()["title"].toString(), QString("menu2"));
-//    }
+    void shouldBeAbleToGetChildrenForAQMenuBar()
+    {
+      QMenuBar menu(NULL);
+      menu.setObjectName("menu");
+      menu.addMenu(new QMenu("menu1", NULL));
+      menu.addAction(new QAction("action2", NULL));
+      menu.addMenu(new QMenu("menu3", NULL));
+
+      QVariantMap map = extractMenus(&menu).toMap();
+
+      QCOMPARE(map["name"].toString(), QString("menu"));
+      QCOMPARE(map["type"].toString(), QString("menuBar"));
+
+      QList<QVariant> children = map["children"].toList();
+      QCOMPARE(children[0].toMap()["title"].toString(), QString("menu1"));
+      QCOMPARE(children[1].toMap()["text"].toString(), QString("action2"));
+      QCOMPARE(children[2].toMap()["title"].toString(), QString("menu3"));
+    }
 };
 
 QTEST_MAIN(MenuHelperTest)

@@ -11,16 +11,21 @@ namespace QTestable
     map["text"] = action->text();
   }
 
+  void populate_children(const QWidget *object, QVariantMap &map)
+  {
+    QList<QVariant> list;
+    foreach(const QAction *action, object->actions())
+      list<<extractMenus(action);
+    map["children"] = list;
+  }
+
   void populatePropertiesOfMenu(const QMenu *menu, QVariantMap &map)
   {
     map["name"] = menu->objectName();
     map["type"] = "menu";
     map["title"] = menu->title();
 
-    QList<QVariant> list;
-    foreach(const QAction *action, menu->actions())
-      list<<extractMenus(action);
-    map["children"] = list;
+    populate_children(menu, map);
   }
 
   QVariant extractMenus(const QAction *object)
@@ -32,6 +37,18 @@ namespace QTestable
       populatePropertiesOfMenu(menu, map);
     else
       populatePropertiesOfAction(object, map);
+
+    return map;
+  }
+
+  QVariant extractMenus(const QMenuBar *menuBar)
+  {
+    QVariantMap map;
+
+    map["name"] = menuBar->objectName();
+    map["type"] = "menuBar";
+
+    populate_children(menuBar, map);
 
     return map;
   }
