@@ -1,6 +1,6 @@
 Name:           qTestable
-Version:        0.0.6
-Release:        7%{?dist}
+Version:        0.0.8
+Release:        8%{?dist}
 Summary:        Library to write functional tests for Qt applications
 
 Group:          Applications/Publishing
@@ -68,6 +68,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-,root,root,-)
 %{_libdir}/*.so.*
+%{_datadir}/dbus-1/interfaces/*
 
 %files devel
 %defattr(-,root,root,-)
@@ -78,6 +79,8 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Mar 18 2011 Tejas Dinkar <tejas@gja.in> - 0.0.8-8
+- Adding the dbus xml
 * Sun Feb 27 2011 Tejas Dinkar <tejas@gja.in> - 0.0.5-6
 - Adding QJson to the RPM
 * Sun Feb 27 2011 Tejas Dinkar <tejas@gja.in> - 0.0.4-4

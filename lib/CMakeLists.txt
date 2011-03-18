@@ -19,3 +19,6 @@ SET_TARGET_PROPERTIES(qTestable
 INSTALL(TARGETS qTestable
         DESTINATION lib
         PERMISSIONS OWNER_READ GROUP_READ WORLD_READ)
+
+INSTALL(FILES org.qTestable.xml
+        DESTINATION share/dbus-1/interfaces)
