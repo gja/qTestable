@@ -24,6 +24,8 @@ namespace QTestable
       static void registerInvalidRequestHandler(IQTestableClassHandler *handler);
       static void registerObject(const QString &objectName, QObject *handler);
       static void unRegisterObject(const QString &objectName);
+
+      static void broadcast(const QString &message);
   };
 }
 

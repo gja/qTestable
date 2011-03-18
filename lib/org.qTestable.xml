@@ -13,4 +13,7 @@
     <method name="IsEnabled">
       <arg name="response" type="b" direction="out" />
     </method>
+    <signal name="Broadcast">
+      <arg name="message" type="s" direction="out" />
+    </signal>
 </node>

@@ -27,4 +27,9 @@ namespace QTestable
   {
     return true;
   }
+
+  void QTestableDBusServer::doBroadcast(const QString &message)
+  {
+    emit Broadcast(message);
+  }
 }

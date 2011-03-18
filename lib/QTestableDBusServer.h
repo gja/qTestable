@@ -15,12 +15,16 @@ namespace QTestable
 
     public:
       QTestableDBusServer(Dispatcher *dispatcher);
+      void doBroadcast(const QString &message);
 
     public slots:
       QString Automate(const QString &request);
       QStringList RegisteredClasses();
       QStringList RegisteredObjects();
       bool IsEnabled();
+
+    signals:
+      void Broadcast(const QString &message);
   };
 }
 

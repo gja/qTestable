@@ -19,6 +19,7 @@ namespace QTestable
       virtual void registerObject(const QString &objectName, QObject *handler) = 0;
       virtual void unRegisterObject(const QString &objectName) = 0;
       virtual void registerStandardHandlers() = 0;
+      virtual void broadcast(const QString &message) = 0;
   };
 
   class ActiveQTestableServicePrivate : public QTestableServicePrivate
@@ -71,6 +72,11 @@ namespace QTestable
         dispatcher.registerClass("mainWindow", StandardHandlers::mainWindowHandler());
         //NEXTHANDLERHERE
       }
+
+      virtual void broadcast(const QString &message)
+      {
+        server->doBroadcast(message);
+      }
   };
 
   class DisabledQTestableServicePrivate : public QTestableServicePrivate
@@ -81,6 +87,7 @@ namespace QTestable
       virtual void registerObject(const QString &objectName, QObject *handler) {};
       virtual void unRegisterObject(const QString &objectName) {};
       virtual void registerStandardHandlers() {}
+      virtual void broadcast(const QString &message) {}
   };
 
   QTestableServicePrivate *QTestableService::d;
@@ -123,5 +130,10 @@ namespace QTestable
   void QTestableService::registerStandardHandlers()
   {
     d->registerStandardHandlers();
+  }
+
+  void QTestableService::broadcast(const QString &message)
+  {
+    d->broadcast(message);
   }
 }
