@@ -32,4 +32,9 @@ namespace QTestable
   {
     emit Broadcast(message);
   }
+
+  void QTestableDBusServer::doStarting()
+  {
+    emit Starting();
+  }
 }

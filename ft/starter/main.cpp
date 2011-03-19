@@ -10,7 +10,10 @@ int main(int argc, char ** argv)
 
   QTestableProxy proxy("org.qTestable.FT", "/", QDBusConnection::sessionBus(), 0);
 
-  QObject::connect(&proxy, SIGNAL(Broadcast(QString)), &app, SLOT(quit()));
+  QObject::connect(&proxy, SIGNAL(Starting()), &app, SLOT(quit()));
+
+  if(proxy.IsEnabled())
+    return 0;
 
   return app.exec();
 }

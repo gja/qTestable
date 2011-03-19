@@ -37,6 +37,8 @@ namespace QTestable
         QDBusConnection connection = QDBusConnection::sessionBus();
         connection.registerService(serviceName);
         connection.registerObject("/", server);
+
+        server->doStarting();
       }
 
       virtual void registerClass(const QString &className, IQTestableClassHandler *handler) 

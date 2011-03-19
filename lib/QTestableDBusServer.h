@@ -16,6 +16,7 @@ namespace QTestable
     public:
       QTestableDBusServer(Dispatcher *dispatcher);
       void doBroadcast(const QString &message);
+      void doStarting();
 
     public slots:
       QString Automate(const QString &request);
@@ -25,6 +26,7 @@ namespace QTestable
 
     signals:
       void Broadcast(const QString &message);
+      void Starting();
   };
 }
 

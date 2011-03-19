@@ -16,4 +16,5 @@
     <signal name="Broadcast">
       <arg name="message" type="s" direction="out" />
     </signal>
+    <signal name="Starting"/>
 </node>
